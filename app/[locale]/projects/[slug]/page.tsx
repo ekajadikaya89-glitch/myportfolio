@@ -27,7 +27,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     path: `/projects/${slug}`,
     title: project.name,
     description: l(project.summary, locale),
-    image: project.image,
     type: 'article',
   })
 }

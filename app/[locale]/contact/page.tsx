@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { CopyEmailButton } from '@/components/contact/copy-email-button'
 import { ContactForm } from '@/components/forms/contact-form'
 import { PageHeader } from '@/components/layout/page-header'
 import { siteConfig } from '@/content/site'
 import { isLocale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/get-dictionary'
 import { isAllowedContactEndpoint } from '@/lib/contact'
-import { ExternalLinkIcon, GitHubIcon, LinkedInIcon, MailIcon } from '@/lib/icons'
+import { CalendarIcon, ExternalLinkIcon, GitHubIcon, LinkedInIcon, MailIcon } from '@/lib/icons'
 import { buildMetadata } from '@/lib/seo'
 
 export const dynamic = 'force-dynamic'
@@ -27,9 +28,14 @@ export default async function ContactPage({ params }: PageProps) {
   const t = dict.contact
 
   const channels = [
+    ...(siteConfig.calendarUrl
+      ? [{ href: siteConfig.calendarUrl, label: t.scheduleCall, handle: t.scheduleHint, icon: CalendarIcon }]
+      : []),
     { href: siteConfig.linkedin, label: 'LinkedIn', handle: 'in/eka-prasetyo', icon: LinkedInIcon },
     { href: siteConfig.github, label: 'GitHub', handle: `@${siteConfig.githubHandle}`, icon: GitHubIcon },
-    ...(siteConfig.email ? [{ href: `mailto:${siteConfig.email}`, label: 'Email', handle: siteConfig.email, icon: MailIcon }] : []),
+    ...(siteConfig.email
+      ? [{ href: `mailto:${siteConfig.email}`, label: 'Email', handle: siteConfig.email, icon: MailIcon }]
+      : []),
   ]
 
   return (
@@ -64,12 +70,21 @@ export default async function ContactPage({ params }: PageProps) {
                       <span className="font-medium text-foreground">{channel.label}</span>
                       <span className="truncate text-sm text-muted-foreground">{channel.handle}</span>
                     </span>
-                    {external ? <ExternalLinkIcon className="size-4 shrink-0 text-muted-foreground group-hover:text-foreground" /> : null}
+                    {external ? (
+                      <ExternalLinkIcon className="size-4 shrink-0 text-muted-foreground group-hover:text-foreground" />
+                    ) : null}
                   </a>
                 </li>
               )
             })}
           </ul>
+          {siteConfig.email ? (
+            <CopyEmailButton
+              email={siteConfig.email}
+              copyLabel={t.copyEmail}
+              copiedLabel={t.copiedEmail}
+            />
+          ) : null}
         </aside>
       </section>
     </>

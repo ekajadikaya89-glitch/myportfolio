@@ -243,6 +243,10 @@ export const en = {
       'Technical Collaboration',
       'Freelance / Consulting',
     ],
+    copyEmail: 'Copy email',
+    copiedEmail: 'Email copied',
+    scheduleCall: 'Schedule a 15-min call',
+    scheduleHint: 'Pick a time slot directly',
     form: {
       name: 'Name',
       email: 'Email',
@@ -300,6 +304,33 @@ export const en = {
     errorTitle: 'Something went wrong while loading this page',
     errorDescription: 'An unexpected error occurred. Retry rendering this view or return to the homepage.',
     retry: 'Try again',
+  },
+  assistant: {
+    eyebrow: '05 / Grounded Portfolio Explorer',
+    title: 'Ask about my work, architecture, or role fit.',
+    description:
+      'A strictly grounded Q&A explorer backed by verified portfolio records, input prompt-injection guardrails, clickable source citations, and an inspectable retrieval trace.',
+    promptsLabel: 'Quick recruiter questions',
+    prompts: [
+      "Summarize Eka's fit for an AI Engineer role",
+      'What is already implemented in DevFlow AI and IndustrialVision AI?',
+      'How does Eka ensure database transaction integrity in inventory systems?',
+      'Show verified 2026 certificates and hackathon achievements',
+    ],
+    inputLabel: 'Ask a technical or hiring question',
+    inputPlaceholder: 'e.g. Which projects use FastAPI, Flutter, or LangGraph?',
+    submit: 'Run query',
+    submitting: 'Querying...',
+    emptyState:
+      'Pick a recruiter prompt on the left or enter your own question. Every answer cites verified pages or certificates and exposes the retrieval trace.',
+    citationsLabel: 'Verified sources',
+    modeRetrieval: 'Grounded Retrieval Engine',
+    modeLlm: 'Grounded RAG + LLM',
+    guardrailLabel: 'Guardrail',
+    inspectTrace: 'Inspect retrieval trace',
+    hideTrace: 'Hide retrieval trace',
+    validationError: 'Please enter at least 2 characters.',
+    requestError: 'Unable to process this query right now. Please try again shortly.',
   },
 }
 

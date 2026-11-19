@@ -28,17 +28,25 @@ describe('portfolio content integrity', () => {
     }
   })
 
-  it('links achievements only to valid project slugs when specified', () => {
+  it('links achievements only to valid project slugs and verified https evidence URLs', () => {
     const slugs = new Set(projects.map((p) => p.slug))
+    const verifiedCount = achievements.filter((item) => item.evidenceUrl?.startsWith('https://')).length
+    assert.ok(verifiedCount >= 2)
+
     for (const item of achievements) {
       if (item.relatedProject) {
         assert.equal(slugs.has(item.relatedProject), true, `Invalid relatedProject: ${item.relatedProject}`)
       }
+      if (item.evidenceUrl) {
+        assert.ok(item.evidenceUrl.startsWith('https://'), `Non-HTTPS evidenceUrl: ${item.evidenceUrl}`)
+      }
     }
   })
 
-  it('keeps published articles complete with bilingual bodies', () => {
-    assert.ok(publishedArticles.length >= 2)
+  it('keeps published articles complete with bilingual bodies across AI and backend topics', () => {
+    assert.ok(publishedArticles.length >= 4)
+    const aiArticles = publishedArticles.filter((a) => a.category.en === 'AI Engineering')
+    assert.ok(aiArticles.length >= 2)
     for (const article of publishedArticles) {
       assert.ok(article.body?.en.length, `Missing EN body for ${article.slug}`)
       assert.ok(article.body?.id.length, `Missing ID body for ${article.slug}`)

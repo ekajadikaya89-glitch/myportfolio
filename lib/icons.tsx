@@ -249,6 +249,25 @@ export function LoaderIcon(props: IconProps) {
   )
 }
 
+export function CopyIcon(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <rect x="9" y="9" width="11" height="11" />
+      <path d="M5 15H4V4h11v1" />
+    </svg>
+  )
+}
+
+export function CalendarIcon(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <rect x="3" y="5" width="18" height="16" />
+      <path d="M3 10h18" />
+      <path d="M8 3v4M16 3v4" />
+    </svg>
+  )
+}
+
 /* Technical Domain Icons (Architectural stroke language, no generic Sparkles) */
 
 export function AiGraphIcon(props: IconProps) {

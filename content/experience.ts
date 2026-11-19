@@ -1,7 +1,7 @@
 import type { ExperienceEntry } from '@/types/content'
 
 /**
- * Experience timeline. Add `period` (e.g. "2023 to Present") only once verified.
+ * Experience timeline. Add `period` on roles only once verified by the owner.
  */
 export const experience: ExperienceEntry[] = [
   {
@@ -40,6 +40,42 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
+    id: 'indonesia-web3-hackathon',
+    kind: 'program',
+    title: { en: 'Hackathon Builder: AI & Web3 Track', id: 'Peserta Hackathon: Jalur AI & Web3' },
+    organization: 'Indonesia Web3 Hackathon 2026 (Binance Academy, BNB Chain, Coinvestasi)',
+    period: 'Nov 2026',
+    summary: {
+      en: 'Designed, built, and submitted a project combining Artificial Intelligence (AI) and Web3 capabilities within the hackathon program.',
+      id: 'Merancang, membangun, dan mengirimkan proyek yang memadukan kapabilitas Artificial Intelligence (AI) dan Web3 dalam rangkaian hackathon.',
+    },
+    responsibilities: {
+      en: [
+        'Prototyping and delivering an end-to-end AI and Web3 submission under hackathon time constraints.',
+        'Documenting architecture and demonstrating working capabilities for final evaluation.',
+      ],
+      id: [
+        'Membuat prototipe dan menyelesaikan proyek AI dan Web3 secara menyeluruh dalam batas waktu hackathon.',
+        'Mendokumentasikan arsitektur dan mendemonstrasikan fitur berjalan untuk penilaian akhir.',
+      ],
+    },
+  },
+  {
+    id: 'digital-entrepreneurship',
+    kind: 'program',
+    title: { en: '3rd Place Winner & Finalist', id: 'Juara 3 & Finalis' },
+    organization: 'Digital Entrepreneurship Challenge & Incubation 2026 (BPKH RI & Universitas Indonesia)',
+    period: 'Oct 2026',
+    summary: {
+      en: 'Awarded 3rd Place in the Digital Entrepreneurship Challenge & Incubation 2026 focused on building sustainable digital products.',
+      id: 'Meraih Juara 3 dalam Digital Entrepreneurship Challenge & Incubation 2026 yang berfokus pada pembangunan produk digital berkelanjutan.',
+    },
+    responsibilities: {
+      en: ['Developing, validating, and presenting a digital product architecture during challenge and incubation sessions.'],
+      id: ['Mengembangkan, memvalidasi, dan mempresentasikan arsitektur produk digital dalam sesi tantangan dan inkubasi.'],
+    },
+  },
+  {
     id: 'infinity-rise',
     kind: 'program',
     title: { en: 'Incubation Participant: HajjTrack Ecosystem', id: 'Peserta Inkubasi: HajjTrack Ecosystem' },
@@ -58,21 +94,6 @@ export const experience: ExperienceEntry[] = [
         'Merancang ekosistem yang mengintegrasikan perangkat IoT, BLE, mobile, dan layanan backend.',
         'Membangun arsitektur produk dan memvalidasi konsep dalam program.',
       ],
-    },
-  },
-  {
-    id: 'digital-entrepreneurship',
-    kind: 'program',
-    title: { en: 'Participant (Top 3)', id: 'Peserta (Top 3)' },
-    organization: 'Digital Entrepreneurship Challenge and Incubation 2026',
-    period: '2026',
-    summary: {
-      en: 'Recognized in the Top 3 of a digital entrepreneurship challenge and incubation program.',
-      id: 'Meraih posisi Top 3 dalam program tantangan dan inkubasi kewirausahaan digital.',
-    },
-    responsibilities: {
-      en: ['Developing and presenting a digital product within the challenge and incubation program.'],
-      id: ['Mengembangkan dan mempresentasikan produk digital dalam program tantangan dan inkubasi.'],
     },
   },
 ]

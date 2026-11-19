@@ -244,6 +244,10 @@ export const id: Dictionary = {
       'Kolaborasi Teknis',
       'Freelance / Konsultasi',
     ],
+    copyEmail: 'Salin email',
+    copiedEmail: 'Email tersalin',
+    scheduleCall: 'Jadwalkan panggilan 15 menit',
+    scheduleHint: 'Pilih slot waktu secara langsung',
     form: {
       name: 'Nama',
       email: 'Email',
@@ -301,5 +305,32 @@ export const id: Dictionary = {
     errorTitle: 'Terjadi kendala saat memuat halaman ini',
     errorDescription: 'Kesalahan tak terduga terjadi. Coba muat ulang tampilan ini atau kembali ke beranda.',
     retry: 'Coba lagi',
+  },
+  assistant: {
+    eyebrow: '05 / Eksplorasi Portfolio Terverifikasi',
+    title: 'Tanyakan tentang proyek, arsitektur, atau kecocokan peran.',
+    description:
+      'Penjelajah tanya-jawab berbasis data portfolio terverifikasi, dilengkapi guardrail anti prompt-injection, sitasi sumber yang dapat diklik, dan trace retrieval yang transparan.',
+    promptsLabel: 'Pertanyaan cepat untuk rekruter',
+    prompts: [
+      'Ringkas kecocokan Eka untuk posisi AI Engineer',
+      'Apa saja yang sudah diimplementasikan di DevFlow AI dan IndustrialVision AI?',
+      'Bagaimana Eka menjaga integritas transaksi basis data pada sistem inventaris?',
+      'Tampilkan sertifikat 2026 dan pencapaian hackathon yang terverifikasi',
+    ],
+    inputLabel: 'Ajukan pertanyaan teknis atau rekrutmen',
+    inputPlaceholder: 'Mis. Proyek mana yang memakai FastAPI, Flutter, atau LangGraph?',
+    submit: 'Jalankan query',
+    submitting: 'Memproses...',
+    emptyState:
+      'Pilih pertanyaan cepat di sebelah kiri atau ketik pertanyaan Anda sendiri. Setiap jawaban merujuk langsung ke sumber terverifikasi dan menampilkan trace retrieval.',
+    citationsLabel: 'Sumber terverifikasi',
+    modeRetrieval: 'Mesin Grounded Retrieval',
+    modeLlm: 'Grounded RAG + LLM',
+    guardrailLabel: 'Guardrail',
+    inspectTrace: 'Lihat retrieval trace',
+    hideTrace: 'Sembunyikan retrieval trace',
+    validationError: 'Masukkan minimal 2 karakter.',
+    requestError: 'Permintaan belum dapat diproses saat ini. Silakan coba lagi sebentar.',
   },
 }

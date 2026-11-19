@@ -6,6 +6,7 @@ import { FinalCta } from '@/components/sections/final-cta'
 import { Hero } from '@/components/sections/hero'
 import { Introduction } from '@/components/sections/introduction'
 import { Philosophy } from '@/components/sections/philosophy'
+import { PortfolioAssistant } from '@/components/sections/portfolio-assistant'
 import { isLocale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/get-dictionary'
 import { buildMetadata } from '@/lib/seo'
@@ -34,6 +35,7 @@ export default async function HomePage({ params }: PageProps) {
         title={dict.philosophy.title}
         principles={dict.philosophy.principles}
       />
+      <PortfolioAssistant locale={locale} copy={dict.assistant} />
       <FinalCta locale={locale} dict={dict} />
     </>
   )

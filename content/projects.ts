@@ -11,10 +11,120 @@ export const projectCategories: ProjectCategory[] = [
 ]
 
 /**
- * Portfolio projects. Add new entries here; pages, filters, sitemap, and
- * resume update automatically. Never add metrics that are not verified.
+ * Portfolio projects. Add new entries here; pages, filters, sitemap, assistant
+ * corpus, and resume update automatically. Never add unverified metrics.
  */
 export const projects: Project[] = [
+  {
+    slug: 'devflow-ai',
+    name: 'DevFlow AI',
+    categories: ['ai', 'devtools', 'saas'],
+    categoryLabel: { en: 'AI / Developer Productivity / SaaS', id: 'AI / Produktivitas Developer / SaaS' },
+    status: 'in-development',
+    featured: true,
+    summary: {
+      en: 'A personal software engineering workspace with a 7-agent planning registry, agile scrum state machine, GitHub integration, and isolated Docker AI code execution.',
+      id: 'Workspace rekayasa perangkat lunak dengan 7 agen perencanaan, state machine agile scrum, integrasi GitHub, dan eksekusi kode AI di container Docker terisolasi.',
+    },
+    problem: {
+      en: 'Engineering work is fragmented across issue trackers, repositories, AI chat tools, and planning documents, so context is lost and unreviewed AI edits create risk.',
+      id: 'Pekerjaan engineering tersebar di issue tracker, repositori, alat chat AI, dan dokumen perencanaan sehingga konteks hilang dan perubahan AI tanpa ulasan menimbulkan risiko.',
+    },
+    solution: {
+      en: 'A monorepo workspace (Express + TypeScript API, React 18 client, shared Zod contracts) where 7 specialized agents produce draft PRDs and backlogs for human approval, run tests inside restricted Docker containers, and open draft PRs on GitHub.',
+      id: 'Workspace monorepo (API Express + TypeScript, klien React 18, kontrak Zod bersama) di mana 7 agen menghasilkan draf PRD dan backlog untuk persetujuan manusia, menjalankan tes di container Docker terisolasi, lalu membuka draft PR di GitHub.',
+    },
+    contribution: {
+      en: 'End-to-end architecture and implementation: multi-agent workflow drafts, dependency-checked Scrum state machine, SSE streaming chat with token tracking, HMAC-verified webhooks, and Docker-sandboxed PR execution.',
+      id: 'Arsitektur dan implementasi menyeluruh: alur draf multi-agen, state machine Scrum dengan deteksi siklus dependensi, chat streaming SSE dengan pelacakan token, webhook bertanda tangan HMAC, dan eksekusi PR terisolasi Docker.',
+    },
+    highlights: {
+      en: [
+        '7-agent planning registry with human approval gates',
+        'Agile Scrum board & centralized state machine',
+        'Docker-isolated AI code execution & draft PRs',
+        'Encrypted GitHub PAT & HMAC webhook verification',
+        'SSE streaming AI chat with token usage tracking',
+        'Multi-member RBAC workspaces & JSON portability',
+      ],
+      id: [
+        'Registri 7 agen perencanaan dengan gerbang persetujuan manusia',
+        'Papan Agile Scrum & state machine terpusat',
+        'Eksekusi kode AI terisolasi Docker & draft PR',
+        'PAT GitHub terenkripsi & verifikasi webhook HMAC',
+        'Chat AI streaming SSE dengan pelacakan penggunaan token',
+        'Workspace RBAC multi-anggota & ekspor-impor JSON',
+      ],
+    },
+    features: [
+      { label: { en: '7-agent planning workflows (draft-first approval)', id: 'Alur perencanaan 7 agen (persetujuan draf)' }, state: 'implemented' },
+      { label: { en: 'Agile Scrum backlog, sprints & Kanban state machine', id: 'Backlog Agile Scrum, sprint & state machine Kanban' }, state: 'implemented' },
+      { label: { en: 'GitHub repo integration, webhooks & audit-logged PRs', id: 'Integrasi repo GitHub, webhook & PR dengan log audit' }, state: 'implemented' },
+      { label: { en: 'Docker-sandboxed AI code execution pipeline', id: 'Pipeline eksekusi kode AI terisolasi Docker' }, state: 'implemented' },
+      { label: { en: 'Streaming SSE AI chat with OpenAI-compatible providers', id: 'Chat AI streaming SSE kompatibel OpenAI' }, state: 'implemented' },
+      { label: { en: 'Hosted Firebase & Cloud Run multi-tenant deployment', id: 'Deployment cloud multi-tenant Firebase & Cloud Run' }, state: 'planned' },
+    ],
+    featuresNote: {
+      en: 'Core API, web workspace, multi-agent planning, GitHub PR pipeline, and automated tests are implemented in the public repository. Managed Firebase / Cloud Run hosting is planned next.',
+      id: 'API inti, workspace web, perencanaan multi-agen, pipeline PR GitHub, dan tes otomatis sudah diimplementasikan di repositori publik. Hosting terkelola Firebase / Cloud Run direncanakan berikutnya.',
+    },
+    stack: ['TypeScript', 'React 18', 'Express', 'Node.js SQLite', 'Zod', 'Docker', 'GitHub API', 'LLM APIs'],
+    image: '/projects/devflow-ai.svg',
+    imageAlt: {
+      en: 'DevFlow AI architecture schematic showing repository context, agent workflow engine, pull request review gate, execution workers, and persistence',
+      id: 'Diagram arsitektur DevFlow AI yang menampilkan konteks repositori, mesin orkestrasi agen, gerbang ulasan PR, worker eksekusi, dan penyimpanan',
+    },
+    links: { repo: 'https://github.com/eka0789/devflow-ai' },
+  },
+  {
+    slug: 'industrialvision-ai',
+    name: 'IndustrialVision AI',
+    categories: ['ai', 'saas', 'web'],
+    categoryLabel: { en: 'Computer Vision / AI / FastAPI', id: 'Computer Vision / AI / FastAPI' },
+    status: 'in-development',
+    featured: true,
+    summary: {
+      en: 'A computer-vision visual inspection platform for manufacturing quality control integrating model management, real-time WebSocket feeds, operator workflows, and evidence logging.',
+      id: 'Platform inspeksi visual berbasis computer vision untuk kendali mutu manufaktur yang mengintegrasikan manajemen model, feed WebSocket real-time, alur operator, dan pencatatan bukti.',
+    },
+    problem: {
+      en: 'Manufacturing quality teams need traceable visual inspection decisions where every pass, fail, or review flag carries clear model rationale and audit evidence.',
+      id: 'Tim mutu manufaktur membutuhkan keputusan inspeksi visual yang dapat ditelusuri, di mana setiap status pass, fail, atau review disertai alasan model dan bukti audit yang jelas.',
+    },
+    solution: {
+      en: 'A full-stack inspection platform pairing a Python 3.13 / FastAPI inference and model registry backend with a role-aware React 19 + TypeScript console streaming live inspection events over WebSockets.',
+      id: 'Platform inspeksi full-stack yang memadukan backend FastAPI Python 3.13 untuk inferensi dan registri model dengan konsol React 19 + TypeScript berbasis peran yang mengalirkan event inspeksi via WebSocket.',
+    },
+    contribution: {
+      en: 'Full-stack architecture across FastAPI REST/WebSocket APIs, PostgreSQL 16 / SQLite persistence, model registry, WCAG 2.1 AA operator console, Docker Compose stack, and contract/integration testing.',
+      id: 'Arsitektur full-stack mencakup API REST/WebSocket FastAPI, persistensi PostgreSQL 16 / SQLite, registri model, konsol operator WCAG 2.1 AA, Docker Compose, serta pengujian kontrak dan integrasi.',
+    },
+    highlights: {
+      en: [
+        'FastAPI Python 3.13 REST & WebSocket backend',
+        'React 19 + TypeScript operator QC console',
+        'Structured inspection outcomes (PASS/FAIL/REVIEW/ERROR)',
+        'Camera station fleet & AI model version registry',
+        'PostgreSQL 16 / SQLite evidence audit logging',
+        'Docker Compose stack with automated API/UI tests',
+      ],
+      id: [
+        'Backend REST & WebSocket FastAPI Python 3.13',
+        'Konsol QC operator React 19 + TypeScript',
+        'Keputusan inspeksi terstruktur (PASS/FAIL/REVIEW/ERROR)',
+        'Manajemen stasiun kamera & registri versi model AI',
+        'Pencatatan bukti audit PostgreSQL 16 / SQLite',
+        'Stack Docker Compose dengan pengujian API/UI otomatis',
+      ],
+    },
+    stack: ['Python', 'FastAPI', 'React 19', 'TypeScript', 'PostgreSQL', 'WebSockets', 'Docker Compose'],
+    image: '/projects/industrialvision-ai.svg',
+    imageAlt: {
+      en: 'IndustrialVision AI architecture diagram connecting station image capture, FastAPI Python vision inference and model registry, live WebSocket feed, React 19 operator console, and PostgreSQL evidence logging',
+      id: 'Diagram arsitektur IndustrialVision AI yang menghubungkan pengambilan gambar stasiun, inferensi visi FastAPI Python dan registri model, feed WebSocket real-time, konsol React 19, dan log bukti PostgreSQL',
+    },
+    links: { repo: 'https://github.com/eka0789/industrialvision-ai-platform' },
+  },
   {
     slug: 'hajjtrack-ecosystem',
     name: 'HajjTrack Ecosystem',
@@ -53,54 +163,6 @@ export const projects: Project[] = [
       en: 'Selected for the Infinity Squad / Infinity Rise 2026 incubation program (Top 10).',
       id: 'Terpilih dalam program inkubasi Infinity Squad / Infinity Rise 2026 (Top 10).',
     },
-  },
-  {
-    slug: 'devflow-ai',
-    name: 'DevFlow AI',
-    categories: ['ai', 'devtools', 'saas'],
-    categoryLabel: { en: 'AI / Developer Productivity / SaaS', id: 'AI / Produktivitas Developer / SaaS' },
-    status: 'in-development',
-    featured: true,
-    summary: {
-      en: 'A software engineering workspace integrating LLM agents across task planning, code generation, and pull request workflows.',
-      id: 'Workspace rekayasa perangkat lunak yang mengintegrasikan agen LLM untuk perencanaan tugas, pembuatan kode, dan alur pull request.',
-    },
-    problem: {
-      en: 'Engineering work is fragmented across issue trackers, repositories, AI chat tools, and planning documents, so context is constantly lost between them.',
-      id: 'Pekerjaan engineering tersebar di issue tracker, repositori, alat chat AI, dan dokumen perencanaan sehingga konteks terus hilang di antara semuanya.',
-    },
-    solution: {
-      en: 'A single workspace where AI agents help plan tasks, generate code, and move work through pull request and sprint workflows with the repository as the source of truth.',
-      id: 'Satu workspace di mana agen AI membantu merencanakan tugas, menghasilkan kode, dan menjalankan alur pull request serta sprint dengan repositori sebagai sumber kebenaran.',
-    },
-    contribution: {
-      en: 'Product definition and architecture: agent orchestration design, GitHub integration strategy, and a Firebase + Cloud Run service architecture.',
-      id: 'Definisi produk dan arsitektur: desain orkestrasi agen, strategi integrasi GitHub, serta arsitektur layanan Firebase + Cloud Run.',
-    },
-    highlights: {
-      en: ['AI engineering assistant', 'Agent orchestration', 'GitHub integration', 'Firebase and Cloud Run architecture'],
-      id: ['Asisten AI engineering', 'Orkestrasi agen', 'Integrasi GitHub', 'Arsitektur Firebase dan Cloud Run'],
-    },
-    features: [
-      { label: { en: 'AI engineering assistant', id: 'Asisten AI engineering' }, state: 'planned' },
-      { label: { en: 'GitHub integration', id: 'Integrasi GitHub' }, state: 'planned' },
-      { label: { en: 'AI task planning', id: 'Perencanaan tugas dengan AI' }, state: 'planned' },
-      { label: { en: 'Code generation', id: 'Pembuatan kode' }, state: 'planned' },
-      { label: { en: 'Pull request workflows', id: 'Alur kerja pull request' }, state: 'planned' },
-      { label: { en: 'Sprint management', id: 'Manajemen sprint' }, state: 'planned' },
-      { label: { en: 'Agent orchestration', id: 'Orkestrasi agen' }, state: 'planned' },
-    ],
-    featuresNote: {
-      en: 'DevFlow AI is in active development. The scope below is the planned product surface; items will be marked as implemented once they ship.',
-      id: 'DevFlow AI sedang dalam pengembangan aktif. Cakupan di bawah adalah rencana produk; item akan ditandai sudah diimplementasikan setelah dirilis.',
-    },
-    stack: ['TypeScript', 'Next.js', 'Firebase', 'Cloud Run', 'LLM APIs', 'GitHub API'],
-    image: '/projects/devflow-ai.svg',
-    imageAlt: {
-      en: 'DevFlow AI architecture schematic showing repository context, agent workflow engine, pull request review gate, Cloud Run workers, and Firebase persistence',
-      id: 'Diagram arsitektur DevFlow AI yang menampilkan konteks repositori, mesin orkestrasi agen, gerbang ulasan PR, worker Cloud Run, dan penyimpanan Firebase',
-    },
-    links: {},
   },
   {
     slug: 'gettsee-wims',
@@ -142,35 +204,46 @@ export const projects: Project[] = [
     name: 'NARA',
     categories: ['ai', 'mobile'],
     categoryLabel: { en: 'AI / Mobile Application', id: 'AI / Aplikasi Mobile' },
-    status: 'concept',
-    featured: true,
+    status: 'in-development',
     summary: {
-      en: 'A smartphone companion concept unifying everyday mobile tasks through conversational AI and OS integrations.',
-      id: 'Konsep asisten smartphone yang menyatukan aktivitas mobile sehari-hari melalui AI percakapan dan integrasi sistem operasi.',
+      en: 'A bilingual Flutter and Firebase smartphone companion unifying hybrid on-device/cloud AI commands, tasks, Kanban boards, hierarchical notes, and habit tracking.',
+      id: 'Aplikasi pendamping smartphone bilingual berbasis Flutter dan Firebase yang menyatukan perintah AI hibrida (lokal/cloud), tugas, papan Kanban, catatan bertingkat, dan pelacak kebiasaan.',
     },
     problem: {
-      en: 'Everyday tasks are scattered across many apps, and switching between them adds friction to simple goals.',
-      id: 'Tugas sehari-hari tersebar di banyak aplikasi, dan berpindah-pindah di antaranya menambah hambatan untuk tujuan yang sederhana.',
+      en: 'Everyday personal tasks, notes, reminders, and habits are scattered across separate apps, adding friction to simple daily actions.',
+      id: 'Tugas harian, catatan, pengingat, dan kebiasaan tersebar di banyak aplikasi terpisah sehingga menambah hambatan untuk aktivitas sederhana.',
     },
     solution: {
-      en: 'A conversational assistant that sits on top of mobile capabilities, combining on-device and cloud AI to interpret intent and act across integrations.',
-      id: 'Asisten percakapan yang berjalan di atas kapabilitas mobile, menggabungkan AI di perangkat dan cloud untuk menafsirkan maksud dan bertindak lintas integrasi.',
+      en: 'A Flutter Android app with a hybrid AI assistant that executes natural commands offline on-device and optionally connects to Gemini Cloud AI, paired with Kanban tasks, sub-page notes, and Firestore rules.',
+      id: 'Aplikasi Android Flutter dengan asisten AI hibrida yang mengeksekusi perintah natural secara offline di perangkat dan opsional terhubung ke Gemini Cloud AI, dilengkapi tugas Kanban, catatan sub-halaman, dan aturan Firestore.',
     },
     contribution: {
-      en: 'Concept and architecture for a hybrid AI assistant, Flutter application structure, and Firebase-backed services.',
-      id: 'Konsep dan arsitektur asisten AI hibrida, struktur aplikasi Flutter, serta layanan berbasis Firebase.',
+      en: 'Full Flutter application architecture, hybrid offline/Gemini AI command router, notification rescheduling, hierarchical markdown notes, and Firebase Firestore rules.',
+      id: 'Arsitektur aplikasi Flutter menyeluruh, router perintah AI hibrida offline/Gemini, penjadwalan ulang notifikasi, catatan markdown bertingkat, dan aturan keamanan Firestore.',
     },
     highlights: {
-      en: ['Flutter', 'Firebase', 'Voice assistant concept', 'Hybrid AI architecture', 'Mobile integrations', 'Personal AI assistant'],
-      id: ['Flutter', 'Firebase', 'Konsep asisten suara', 'Arsitektur AI hibrida', 'Integrasi mobile', 'Asisten AI pribadi'],
+      en: [
+        'Hybrid offline on-device + optional Gemini Cloud AI',
+        'Tasks with list/Kanban board view & reminders',
+        'Hierarchical sub-page notes & markdown checklists',
+        'Habit tracker & bilingual EN/ID mobile UX',
+        'Flutter + Firebase Firestore security rules',
+      ],
+      id: [
+        'AI hibrida offline di perangkat + opsional Gemini Cloud',
+        'Tugas dengan tampilan list/Kanban & pengingat otomatis',
+        'Catatan sub-halaman bertingkat & checklist markdown',
+        'Pelacak kebiasaan & antarmuka mobile bilingual EN/ID',
+        'Flutter + aturan keamanan Firebase Firestore',
+      ],
     },
-    stack: ['Flutter', 'Dart', 'Firebase', 'LLM APIs'],
+    stack: ['Flutter', 'Dart', 'Firebase', 'Firestore', 'Gemini API'],
     image: '/projects/nara.svg',
     imageAlt: {
-      en: 'NARA concept architecture diagram connecting Flutter voice and text input through a hybrid intent router to fast on-device actions and cloud LLM orchestration',
-      id: 'Diagram arsitektur konsep NARA yang menghubungkan input suara dan teks Flutter melalui router intent hibrida ke eksekusi lokal dan orkestrasi LLM cloud',
+      en: 'NARA architecture diagram connecting Flutter voice and text input through a hybrid intent router to fast on-device actions and cloud LLM orchestration',
+      id: 'Diagram arsitektur NARA yang menghubungkan input suara dan teks Flutter melalui router intent hibrida ke eksekusi lokal dan orkestrasi LLM cloud',
     },
-    links: {},
+    links: { repo: 'https://github.com/eka0789/NARA' },
   },
   {
     slug: 'kyro-printing',
@@ -207,40 +280,6 @@ export const projects: Project[] = [
     links: {},
   },
   {
-    slug: 'aktifkoding',
-    name: 'AktifKoding',
-    categories: ['devtools', 'web'],
-    categoryLabel: { en: 'Developer Tools / Web Platform', id: 'Developer Tools / Platform Web' },
-    status: 'live',
-    summary: {
-      en: 'A developer-focused platform bringing software development tools, resources, and productivity utilities into one place.',
-      id: 'Platform untuk developer yang menghadirkan alat pengembangan, sumber belajar, dan utilitas produktivitas dalam satu tempat.',
-    },
-    problem: {
-      en: 'Developers spend time hunting for reliable tools and resources spread across many websites.',
-      id: 'Developer menghabiskan waktu mencari alat dan sumber daya yang andal yang tersebar di banyak situs.',
-    },
-    solution: {
-      en: 'A curated directory and utility hub for developers, built on a modern web stack with room for community-oriented features.',
-      id: 'Direktori dan pusat utilitas yang dikurasi untuk developer, dibangun dengan stack web modern dan siap untuk fitur berbasis komunitas.',
-    },
-    contribution: {
-      en: 'End-to-end build: Next.js web architecture, Supabase data layer, and the developer tools directory experience.',
-      id: 'Pembangunan menyeluruh: arsitektur web Next.js, lapisan data Supabase, dan pengalaman direktori developer tools.',
-    },
-    highlights: {
-      en: ['Next.js', 'Supabase', 'Developer tools directory', 'Community-oriented features', 'Web architecture'],
-      id: ['Next.js', 'Supabase', 'Direktori developer tools', 'Fitur berbasis komunitas', 'Arsitektur web'],
-    },
-    stack: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS', 'Vercel'],
-    image: '/projects/aktifkoding.svg',
-    imageAlt: {
-      en: 'AktifKoding platform architecture diagram showing Next.js tool directory, productivity utilities, community resources, and Supabase PostgreSQL layer',
-      id: 'Diagram arsitektur platform AktifKoding yang menampilkan direktori alat Next.js, utilitas produktivitas, sumber daya komunitas, dan lapisan Supabase PostgreSQL',
-    },
-    links: { live: 'https://www.aktifkoding.biz.id/' },
-  },
-  {
     slug: 'ruangkumpul',
     name: 'RuangKumpul',
     categories: ['web'],
@@ -272,7 +311,10 @@ export const projects: Project[] = [
       en: 'RuangKumpul ecosystem schematic connecting shared tools, curated knowledge, and community discussion channels on Next.js and Supabase',
       id: 'Diagram ekosistem RuangKumpul yang menghubungkan alat bersama, pengetahuan terkurasi, dan kanal diskusi komunitas di Next.js dan Supabase',
     },
-    links: { live: 'https://ruangkumpul.my.id/' },
+    links: {
+      live: 'https://ruangkumpul.my.id/',
+      repo: 'https://github.com/eka0789/ruangkumpul',
+    },
   },
   {
     slug: 'jasait',
@@ -307,6 +349,43 @@ export const projects: Project[] = [
       id: 'Diagram arsitektur platform JasaIT yang menampilkan katalog layanan, penyusunan solusi bisnis, dan alur konsultasi yang dibangun dengan Next.js',
     },
     links: { live: 'https://www.jasait.my.id/' },
+  },
+  {
+    slug: 'aktifkoding',
+    name: 'AktifKoding',
+    categories: ['devtools', 'web'],
+    categoryLabel: { en: 'Developer Tools / Web Platform', id: 'Developer Tools / Platform Web' },
+    status: 'in-development',
+    summary: {
+      en: 'A developer-focused platform bringing software development tools, resources, and productivity utilities into one place.',
+      id: 'Platform untuk developer yang menghadirkan alat pengembangan, sumber belajar, dan utilitas produktivitas dalam satu tempat.',
+    },
+    problem: {
+      en: 'Developers spend time hunting for reliable tools and resources spread across many websites.',
+      id: 'Developer menghabiskan waktu mencari alat dan sumber daya yang andal yang tersebar di banyak situs.',
+    },
+    solution: {
+      en: 'A curated directory and utility hub for developers, built on Next.js and Supabase with room for community-oriented features.',
+      id: 'Direktori dan pusat utilitas yang dikurasi untuk developer, dibangun dengan Next.js dan Supabase dan siap untuk fitur berbasis komunitas.',
+    },
+    contribution: {
+      en: 'End-to-end build: Next.js web architecture, Supabase data layer, and the developer tools directory experience.',
+      id: 'Pembangunan menyeluruh: arsitektur web Next.js, lapisan data Supabase, dan pengalaman direktori developer tools.',
+    },
+    highlights: {
+      en: ['Next.js', 'Supabase', 'Developer tools directory', 'Community-oriented features', 'Web architecture'],
+      id: ['Next.js', 'Supabase', 'Direktori developer tools', 'Fitur berbasis komunitas', 'Arsitektur web'],
+    },
+    stack: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS', 'Vercel'],
+    image: '/projects/aktifkoding.svg',
+    imageAlt: {
+      en: 'AktifKoding platform architecture diagram showing Next.js tool directory, productivity utilities, community resources, and Supabase PostgreSQL layer',
+      id: 'Diagram arsitektur platform AktifKoding yang menampilkan direktori alat Next.js, utilitas produktivitas, sumber daya komunitas, dan lapisan Supabase PostgreSQL',
+    },
+    links: {
+      live: 'https://www.aktifkoding.biz.id/',
+      repo: 'https://github.com/eka0789/alltools',
+    },
   },
 ]
 
