@@ -1,0 +1,49 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#0B0D11"/>
+  <rect x="64" y="56" width="1472" height="888" rx="12" fill="#101319" stroke="#252A34" stroke-width="2"/>
+  <line x1="64" y1="136" x2="1536" y2="136" stroke="#252A34" stroke-width="2"/>
+  <text x="104" y="104" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" letter-spacing="1">SPEC 08 / IT SERVICES &amp; CONSULTATION PLATFORM</text>
+  <text x="1496" y="104" text-anchor="end" fill="#4ADE80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22">JASAIT.MY.ID</text>
+
+  <!-- Left: Conversion & Information Architecture -->
+  <rect x="104" y="196" width="840" height="692" rx="10" fill="#0B0D11" stroke="#252A34" stroke-width="2"/>
+  <text x="144" y="248" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">CLIENT DISCOVERY &amp; CONVERSION ARCHITECTURE</text>
+  <text x="144" y="294" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="600">Clear Technical Service Presentation</text>
+
+  <!-- Structured rows -->
+  <rect x="144" y="336" width="760" height="144" rx="8" fill="#141922" stroke="#252A34" stroke-width="1.5"/>
+  <text x="176" y="382" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">01 / SERVICE CATALOG</text>
+  <text x="176" y="418" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="600">Web Engineering, Systems &amp; IT Consultation</text>
+  <text x="176" y="452" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Structured offerings helping businesses evaluate technical scope quickly</text>
+
+  <rect x="144" y="508" width="760" height="144" rx="8" fill="#141922" stroke="#252A34" stroke-width="1.5"/>
+  <text x="176" y="554" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">02 / SOLUTION FRAMING</text>
+  <text x="176" y="590" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="600">Business-Oriented Information Hierarchy</text>
+  <text x="176" y="624" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Translates technical deliverables into clear business outcomes without jargon</text>
+
+  <rect x="144" y="680" width="760" height="164" rx="8" fill="#141922" stroke="#38BDF8" stroke-width="2"/>
+  <text x="176" y="726" fill="#4ADE80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">03 / CONSULTATION ENTRY</text>
+  <text x="176" y="762" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="600">Direct Inquiry &amp; Scoping Path</text>
+  <text x="176" y="798" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Low-friction routing from service page straight to consultation discussion</text>
+
+  <!-- Right: Engineering specs panel -->
+  <rect x="984" y="196" width="512" height="692" rx="10" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="1020" y="248" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">IMPLEMENTATION PROFILE</text>
+  <text x="1020" y="294" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="600">JasaIT Web Platform</text>
+
+  <line x1="1020" y1="336" x2="1460" y2="336" stroke="#252A34" stroke-width="1.5"/>
+  <text x="1020" y="382" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">FRAMEWORK</text>
+  <text x="1020" y="416" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="500">Next.js + TypeScript</text>
+
+  <line x1="1020" y1="456" x2="1460" y2="456" stroke="#252A34" stroke-width="1.5"/>
+  <text x="1020" y="502" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">STYLING</text>
+  <text x="1020" y="536" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="500">Tailwind CSS Responsive UI</text>
+
+  <line x1="1020" y1="576" x2="1460" y2="576" stroke="#252A34" stroke-width="1.5"/>
+  <text x="1020" y="622" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">PRIMARY GOAL</text>
+  <text x="1020" y="656" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="500">Customer Acquisition &amp; Trust</text>
+
+  <line x1="1020" y1="696" x2="1460" y2="696" stroke="#252A34" stroke-width="1.5"/>
+  <text x="1020" y="742" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">DEPLOYMENT</text>
+  <text x="1020" y="776" fill="#4ADE80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20">https://www.jasait.my.id/</text>
+</svg>

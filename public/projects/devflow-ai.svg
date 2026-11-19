@@ -1,0 +1,74 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#0B0D11"/>
+  <rect x="64" y="56" width="1472" height="888" rx="12" fill="#101319" stroke="#252A34" stroke-width="2"/>
+  <line x1="64" y1="136" x2="1536" y2="136" stroke="#252A34" stroke-width="2"/>
+  <text x="104" y="104" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" letter-spacing="1">SPEC 02 / AGENT ORCHESTRATION &amp; SDLC PIPELINE</text>
+  <text x="1496" y="104" text-anchor="end" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22">DEVFLOW AI</text>
+
+  <!-- Horizontal SDLC Flow Nodes -->
+  <!-- Stage 1 -->
+  <rect x="104" y="210" width="300" height="236" rx="10" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="132" y="254" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">STAGE 01</text>
+  <text x="132" y="294" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="600">Repository Context</text>
+  <text x="132" y="334" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">GitHub issues, commits,</text>
+  <text x="132" y="362" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">and codebase structure</text>
+  <text x="132" y="414" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">GitHub API</text>
+
+  <line x1="404" y1="328" x2="458" y2="328" stroke="#38BDF8" stroke-width="2.5"/>
+  <polygon points="454,320 470,328 454,336" fill="#38BDF8"/>
+
+  <!-- Stage 2 (Focal Orchestrator) -->
+  <rect x="472" y="196" width="380" height="264" rx="10" fill="#141922" stroke="#38BDF8" stroke-width="2.5"/>
+  <text x="504" y="242" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">STAGE 02 / ORCHESTRATOR</text>
+  <text x="504" y="282" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="600">Agent Workflow Engine</text>
+  <rect x="504" y="308" width="316" height="44" rx="6" fill="#0B0D11" stroke="#363D4B" stroke-width="1.5"/>
+  <text x="522" y="336" fill="#F5F6F7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">1. Task Planning Agent</text>
+  <rect x="504" y="362" width="316" height="44" rx="6" fill="#0B0D11" stroke="#363D4B" stroke-width="1.5"/>
+  <text x="522" y="390" fill="#F5F6F7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">2. Code Generation Worker</text>
+  <text x="504" y="438" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">LLM APIs + Tool Boundaries</text>
+
+  <line x1="852" y1="328" x2="906" y2="328" stroke="#38BDF8" stroke-width="2.5"/>
+  <polygon points="902,320 918,328 902,336" fill="#38BDF8"/>
+
+  <!-- Stage 3 -->
+  <rect x="920" y="210" width="276" height="236" rx="10" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="948" y="254" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">STAGE 03</text>
+  <text x="948" y="294" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="600">PR Review Gate</text>
+  <text x="948" y="334" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Human approval before</text>
+  <text x="948" y="362" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">branch merge or release</text>
+  <text x="948" y="414" fill="#4ADE80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">Human-in-the-loop</text>
+
+  <line x1="1196" y1="328" x2="1246" y2="328" stroke="#5E6673" stroke-width="2.5"/>
+  <polygon points="1242,320 1258,328 1242,336" fill="#5E6673"/>
+
+  <!-- Stage 4 -->
+  <rect x="1260" y="210" width="236" height="236" rx="10" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="1288" y="254" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">STAGE 04</text>
+  <text x="1288" y="294" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="600">Sprint Board</text>
+  <text x="1288" y="334" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Synced issue</text>
+  <text x="1288" y="362" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">state tracking</text>
+  <text x="1288" y="414" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">Planned</text>
+
+  <!-- Bottom Infrastructure Plane -->
+  <line x1="662" y1="460" x2="662" y2="544" stroke="#5E6673" stroke-width="2" stroke-dasharray="6 6"/>
+  <rect x="104" y="548" width="1392" height="348" rx="10" fill="#0B0D11" stroke="#252A34" stroke-width="2"/>
+  <text x="144" y="600" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">RUNTIME &amp; SERVICE TOPOLOGY (IN DEVELOPMENT)</text>
+
+  <rect x="144" y="636" width="412" height="216" rx="8" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="176" y="684" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600">Web Workspace</text>
+  <text x="176" y="722" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Next.js App Router + TypeScript</text>
+  <text x="176" y="754" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Unified issue, plan, and PR views</text>
+  <text x="176" y="818" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">FRONTEND SURFACE</text>
+
+  <rect x="594" y="636" width="412" height="216" rx="8" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="626" y="684" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600">Cloud Run Workers</text>
+  <text x="626" y="722" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Isolated stateless task runners</text>
+  <text x="626" y="754" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Bounded token &amp; timeout budgets</text>
+  <text x="626" y="818" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">EXECUTION PLANE</text>
+
+  <rect x="1044" y="636" width="412" height="216" rx="8" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="1076" y="684" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600">Firebase State &amp; Auth</text>
+  <text x="1076" y="722" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Workspace identity and live state</text>
+  <text x="1076" y="754" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Execution traces and audit trail</text>
+  <text x="1076" y="818" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">PERSISTENCE LAYER</text>
+</svg>

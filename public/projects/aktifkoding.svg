@@ -1,0 +1,46 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#0B0D11"/>
+  <rect x="64" y="56" width="1472" height="888" rx="12" fill="#101319" stroke="#252A34" stroke-width="2"/>
+  <line x1="64" y1="136" x2="1536" y2="136" stroke="#252A34" stroke-width="2"/>
+  <text x="104" y="104" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" letter-spacing="1">SPEC 06 / DEVELOPER TOOLS &amp; UTILITY DIRECTORY PLATFORM</text>
+  <text x="1496" y="104" text-anchor="end" fill="#4ADE80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22">AKTIFKODING.BIZ.ID</text>
+
+  <!-- Top architectural strip -->
+  <rect x="104" y="192" width="1392" height="176" rx="10" fill="#141922" stroke="#38BDF8" stroke-width="2"/>
+  <text x="144" y="242" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">PUBLIC WEB PLATFORM / NEXT.JS + TYPESCRIPT + TAILWIND</text>
+  <text x="144" y="286" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="600">Curated Developer Tools &amp; Engineering Utilities</text>
+  <text x="144" y="328" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="20">Searchable catalog uniting practical developer tools, learning references, and daily browser utilities</text>
+
+  <!-- Connectors -->
+  <line x1="340" y1="368" x2="340" y2="432" stroke="#5E6673" stroke-width="2"/>
+  <line x1="800" y1="368" x2="800" y2="432" stroke="#38BDF8" stroke-width="2"/>
+  <line x1="1260" y1="368" x2="1260" y2="432" stroke="#5E6673" stroke-width="2"/>
+
+  <!-- 3 domain modules -->
+  <rect x="104" y="436" width="436" height="236" rx="10" fill="#0B0D11" stroke="#252A34" stroke-width="2"/>
+  <text x="136" y="484" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">MODULE 01</text>
+  <text x="136" y="524" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="600">Tool Directory</text>
+  <text x="136" y="564" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Categorized developer tools,</text>
+  <text x="136" y="592" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">tag filters, and direct references</text>
+  <text x="136" y="642" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15">FAST INDEXING</text>
+
+  <rect x="582" y="436" width="436" height="236" rx="10" fill="#0B0D11" stroke="#252A34" stroke-width="2"/>
+  <text x="614" y="484" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">MODULE 02</text>
+  <text x="614" y="524" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="600">Productivity Utilities</text>
+  <text x="614" y="564" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Lightweight engineering utilities</text>
+  <text x="614" y="592" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">accessible in one workspace</text>
+  <text x="614" y="642" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15">CLIENT &amp; SERVER COMPONENTS</text>
+
+  <rect x="1060" y="436" width="436" height="236" rx="10" fill="#0B0D11" stroke="#252A34" stroke-width="2"/>
+  <text x="1092" y="484" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">MODULE 03</text>
+  <text x="1092" y="524" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="600">Community Resources</text>
+  <text x="1092" y="564" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Structured submissions and</text>
+  <text x="1092" y="592" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">curated learning pathways</text>
+  <text x="1092" y="642" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15">EXTENSIBLE SCHEMA</text>
+
+  <!-- Data & Hosting footer -->
+  <rect x="104" y="724" width="1392" height="168" rx="10" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="144" y="776" fill="#4ADE80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">DATA &amp; DEPLOYMENT INFRASTRUCTURE</text>
+  <text x="144" y="818" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600">Supabase PostgreSQL · Row-Level Security · Vercel Edge Delivery</text>
+  <text x="144" y="856" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17">NEXT.JS · TYPESCRIPT · SUPABASE · TAILWIND CSS · VERCEL</text>
+</svg>

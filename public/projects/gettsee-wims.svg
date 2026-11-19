@@ -1,0 +1,79 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#0B0D11"/>
+  <rect x="64" y="56" width="1472" height="888" rx="12" fill="#101319" stroke="#252A34" stroke-width="2"/>
+  <line x1="64" y1="136" x2="1536" y2="136" stroke="#252A34" stroke-width="2"/>
+  <text x="104" y="104" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" letter-spacing="1">SPEC 03 / TRANSACTIONAL INVENTORY &amp; WAREHOUSE LEDGER</text>
+  <text x="1496" y="104" text-anchor="end" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22">GETTSEE WIMS</text>
+
+  <!-- Left column: Inbound Operations -->
+  <rect x="104" y="196" width="360" height="196" rx="10" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="136" y="242" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">INBOUND</text>
+  <text x="136" y="280" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="600">Purchase Orders</text>
+  <text x="136" y="318" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Supplier intake, receiving</text>
+  <text x="136" y="346" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">verification, and batch entry</text>
+
+  <rect x="104" y="428" width="360" height="196" rx="10" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="136" y="474" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">MOVEMENT</text>
+  <text x="136" y="512" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="600">Warehouse Transfers</text>
+  <text x="136" y="550" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Source lock, transit state,</text>
+  <text x="136" y="578" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">and destination receipt</text>
+
+  <rect x="104" y="660" width="360" height="224" rx="10" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="136" y="706" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">ADJUSTMENT</text>
+  <text x="136" y="744" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="600">Stock Audit &amp; Returns</text>
+  <text x="136" y="782" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Compensating entries with</text>
+  <text x="136" y="810" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">reason code and actor trace</text>
+
+  <!-- Converging lines to Center Atomic Ledger -->
+  <path d="M464 294 H524 V504 H568" stroke="#38BDF8" stroke-width="2.5"/>
+  <line x1="464" y1="526" x2="568" y2="526" stroke="#38BDF8" stroke-width="2.5"/>
+  <path d="M464 772 H524 V548 H568" stroke="#38BDF8" stroke-width="2.5"/>
+  <polygon points="564,518 580,526 564,534" fill="#38BDF8"/>
+
+  <!-- Center focal block: Atomic Transaction Core -->
+  <rect x="584" y="196" width="496" height="688" rx="10" fill="#0B0D11" stroke="#38BDF8" stroke-width="2.5"/>
+  <text x="620" y="246" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">ATOMIC TRANSACTION CORE</text>
+  <text x="620" y="290" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="600">Append-Only Stock Ledger</text>
+  <text x="620" y="328" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="19">Laravel + MySQL pessimistic row locking</text>
+
+  <rect x="620" y="366" width="424" height="110" rx="8" fill="#141922" stroke="#2E3645" stroke-width="1.5"/>
+  <text x="646" y="404" fill="#4ADE80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17">01. SELECT ... FOR UPDATE</text>
+  <text x="646" y="438" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Prevents concurrent lost updates on SKU row</text>
+
+  <rect x="620" y="498" width="424" height="110" rx="8" fill="#141922" stroke="#2E3645" stroke-width="1.5"/>
+  <text x="646" y="536" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17">02. GUARDED DELTA UPDATE</text>
+  <text x="646" y="570" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Database refuses negative balance writes</text>
+
+  <rect x="620" y="630" width="424" height="110" rx="8" fill="#141922" stroke="#2E3645" stroke-width="1.5"/>
+  <text x="646" y="668" fill="#F5F6F7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17">03. IMMUTABLE LEDGER ENTRY</text>
+  <text x="646" y="702" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Every quantity change maps to a reference ID</text>
+
+  <line x1="620" y1="776" x2="1044" y2="776" stroke="#252A34" stroke-width="1.5"/>
+  <text x="620" y="816" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17">STACK: LARAVEL · PHP · MYSQL · REST API</text>
+  <text x="620" y="848" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17">CONSISTENCY: ACID + IDEMPOTENT REFS</text>
+
+  <!-- Outgoing lines to Outlets -->
+  <line x1="1080" y1="360" x2="1164" y2="360" stroke="#5E6673" stroke-width="2.5"/>
+  <polygon points="1160,352 1176,360 1160,368" fill="#5E6673"/>
+  <line x1="1080" y1="690" x2="1164" y2="690" stroke="#5E6673" stroke-width="2.5"/>
+  <polygon points="1160,682 1176,690 1160,698" fill="#5E6673"/>
+
+  <!-- Right column: Multi-Outlet Sync -->
+  <rect x="1180" y="196" width="316" height="320" rx="10" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="1212" y="244" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">DISTRIBUTION</text>
+  <text x="1212" y="284" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="600">Multi-Outlet POS</text>
+  <text x="1212" y="324" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Outlet stock visibility</text>
+  <text x="1212" y="352" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">synchronized with</text>
+  <text x="1212" y="380" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">central warehouse</text>
+  <rect x="1212" y="424" width="252" height="56" rx="6" fill="#0B0D11" stroke="#363D4B" stroke-width="1.5"/>
+  <text x="1232" y="458" fill="#F5F6F7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">Warehouse -&gt; Outlets</text>
+
+  <rect x="1180" y="556" width="316" height="328" rx="10" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="1212" y="604" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">OPERATIONS</text>
+  <text x="1212" y="644" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="600">Audit &amp; Reporting</text>
+  <text x="1212" y="684" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">Traceable movement</text>
+  <text x="1212" y="712" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">history across purchases,</text>
+  <text x="1212" y="740" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="18">transfers, and sales</text>
+  <rect x="1212" y="788" width="252" height="56" rx="6" fill="#0B0D11" stroke="#363D4B" stroke-width="1.5"/>
+  <text x="1232" y="822" fill="#4ADE80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">Full movement audit</text>
+</svg>

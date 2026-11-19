@@ -1,0 +1,75 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#0B0D11"/>
+  <!-- Outer frame & specification header -->
+  <rect x="64" y="56" width="1472" height="888" rx="12" fill="#101319" stroke="#252A34" stroke-width="2"/>
+  <line x1="64" y1="136" x2="1536" y2="136" stroke="#252A34" stroke-width="2"/>
+  <text x="104" y="104" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" letter-spacing="1">SPEC 01 / IOT &amp; MOBILE TELEMETRY ARCHITECTURE</text>
+  <text x="1496" y="104" text-anchor="end" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22">HAJJTRACK ECOSYSTEM</text>
+
+  <!-- Left zone: BLE proximity topology -->
+  <rect x="104" y="180" width="520" height="720" rx="10" fill="#0B0D11" stroke="#252A34" stroke-width="2"/>
+  <text x="136" y="228" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="600">Field Hardware &amp; BLE Mesh</text>
+  <text x="136" y="260" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">Short-range beacon discovery</text>
+
+  <!-- Concentric range rings -->
+  <circle cx="364" cy="520" r="200" stroke="#252A34" stroke-width="2" stroke-dasharray="6 8"/>
+  <circle cx="364" cy="520" r="130" stroke="#2E3645" stroke-width="2"/>
+  <circle cx="364" cy="520" r="64" stroke="#38BDF8" stroke-width="2"/>
+  <circle cx="364" cy="520" r="16" fill="#38BDF8"/>
+
+  <!-- Satellite BLE nodes -->
+  <line x1="364" y1="520" x2="250" y2="410" stroke="#38BDF8" stroke-width="2" stroke-dasharray="4 6"/>
+  <rect x="164" y="366" width="164" height="58" rx="6" fill="#141922" stroke="#38BDF8" stroke-width="2"/>
+  <text x="182" y="392" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600">BLE Tracker</text>
+  <text x="182" y="414" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">Low-power beacon</text>
+
+  <line x1="364" y1="520" x2="480" y2="630" stroke="#5E6673" stroke-width="2" stroke-dasharray="4 6"/>
+  <rect x="396" y="612" width="188" height="58" rx="6" fill="#141922" stroke="#5E6673" stroke-width="2"/>
+  <text x="414" y="638" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600">Group Gateway</text>
+  <text x="414" y="660" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">Relay checkpoint</text>
+
+  <rect x="136" y="796" width="456" height="72" rx="8" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="160" y="828" fill="#F5F6F7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">TRANSPORT: BLE GATT -&gt; MOBILE RELAY</text>
+  <text x="160" y="852" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="16">Offline-resilient signaling in crowded venues</text>
+
+  <!-- Connectors from Left to Right pipeline -->
+  <line x1="624" y1="360" x2="716" y2="360" stroke="#38BDF8" stroke-width="2.5"/>
+  <polygon points="716,352 732,360 716,368" fill="#38BDF8"/>
+
+  <!-- Right zone: Stacked system layers -->
+  <!-- Layer 1: Flutter Mobile Client -->
+  <rect x="736" y="180" width="760" height="210" rx="10" fill="#141922" stroke="#38BDF8" stroke-width="2"/>
+  <text x="772" y="226" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">01 / MOBILE APPLICATION</text>
+  <text x="772" y="264" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="600">Flutter Pilgrim &amp; Family Client</text>
+  <text x="772" y="302" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="20">BLE scanner, proximity alerts, group status, and sync queue</text>
+  <rect x="772" y="328" width="132" height="36" rx="6" fill="#0B0D11" stroke="#363D4B" stroke-width="1.5"/>
+  <text x="838" y="352" text-anchor="middle" fill="#F5F6F7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">Flutter</text>
+  <rect x="920" y="328" width="110" height="36" rx="6" fill="#0B0D11" stroke="#363D4B" stroke-width="1.5"/>
+  <text x="975" y="352" text-anchor="middle" fill="#F5F6F7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">Dart</text>
+  <rect x="1046" y="328" width="154" height="36" rx="6" fill="#0B0D11" stroke="#363D4B" stroke-width="1.5"/>
+  <text x="1123" y="352" text-anchor="middle" fill="#F5F6F7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">BLE GATT</text>
+
+  <!-- Vertical connector 1->2 -->
+  <line x1="1116" y1="390" x2="1116" y2="440" stroke="#5E6673" stroke-width="2.5"/>
+  <polygon points="1108,434 1116,450 1124,434" fill="#5E6673"/>
+
+  <!-- Layer 2: Backend & Real-time Messaging -->
+  <rect x="736" y="454" width="760" height="196" rx="10" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="772" y="498" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">02 / BACKEND &amp; REAL-TIME COORDINATION</text>
+  <text x="772" y="536" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="600">API Gateway &amp; Event Broker</text>
+  <text x="772" y="574" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="20">Device telemetry ingestion, group membership, and status broadcasts</text>
+  <rect x="772" y="596" width="154" height="34" rx="6" fill="#0B0D11" stroke="#363D4B" stroke-width="1.5"/>
+  <text x="849" y="619" text-anchor="middle" fill="#F5F6F7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">REST API</text>
+  <rect x="942" y="596" width="230" height="34" rx="6" fill="#0B0D11" stroke="#363D4B" stroke-width="1.5"/>
+  <text x="1057" y="619" text-anchor="middle" fill="#F5F6F7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">Real-Time Sync</text>
+
+  <!-- Vertical connector 2->3 -->
+  <line x1="1116" y1="650" x2="1116" y2="700" stroke="#5E6673" stroke-width="2.5"/>
+  <polygon points="1108,694 1116,710 1124,694" fill="#5E6673"/>
+
+  <!-- Layer 3: Organizer Coordination -->
+  <rect x="736" y="714" width="760" height="186" rx="10" fill="#0B0D11" stroke="#252A34" stroke-width="2"/>
+  <text x="772" y="758" fill="#4ADE80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">03 / INCUBATION MILESTONE</text>
+  <text x="772" y="796" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="600">Infinity Squad / Infinity Rise 2026</text>
+  <text x="772" y="834" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="20">Top 10 selected ecosystem connecting hardware, mobile, and organizers</text>
+</svg>

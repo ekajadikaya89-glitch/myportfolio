@@ -1,0 +1,54 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#0B0D11"/>
+  <rect x="64" y="56" width="1472" height="888" rx="12" fill="#101319" stroke="#252A34" stroke-width="2"/>
+  <line x1="64" y1="136" x2="1536" y2="136" stroke="#252A34" stroke-width="2"/>
+  <text x="104" y="104" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" letter-spacing="1">SPEC 05 / ORDER-DRIVEN INVENTORY &amp; STOCK RESERVATION</text>
+  <text x="1496" y="104" text-anchor="end" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22">KYRO PRINTING</text>
+
+  <!-- 3-step reservation state machine -->
+  <rect x="104" y="200" width="416" height="296" rx="10" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="136" y="248" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">STATE 01 / INTAKE</text>
+  <text x="136" y="290" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="600">Print Order Intake</text>
+  <text x="136" y="334" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="19">Paper stock, ink, and finishing</text>
+  <text x="136" y="364" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="19">requirements computed per job</text>
+  <rect x="136" y="408" width="352" height="52" rx="6" fill="#0B0D11" stroke="#363D4B" stroke-width="1.5"/>
+  <text x="158" y="440" fill="#F5F6F7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">Status: queued -&gt; allocated</text>
+
+  <line x1="520" y1="348" x2="574" y2="348" stroke="#38BDF8" stroke-width="2.5"/>
+  <polygon points="570,340 586,348 570,356" fill="#38BDF8"/>
+
+  <rect x="590" y="200" width="420" height="296" rx="10" fill="#141922" stroke="#38BDF8" stroke-width="2.5"/>
+  <text x="622" y="248" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">STATE 02 / RESERVATION LOCK</text>
+  <text x="622" y="290" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="600">Material Reservation</text>
+  <text x="622" y="334" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="19">Separates available stock from</text>
+  <text x="622" y="364" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="19">reserved allocations across jobs</text>
+  <rect x="622" y="408" width="356" height="52" rx="6" fill="#0B0D11" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="644" y="440" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">available = on_hand - reserved</text>
+
+  <line x1="1010" y1="348" x2="1064" y2="348" stroke="#4ADE80" stroke-width="2.5"/>
+  <polygon points="1060,340 1076,348 1060,356" fill="#4ADE80"/>
+
+  <rect x="1080" y="200" width="416" height="296" rx="10" fill="#141922" stroke="#252A34" stroke-width="2"/>
+  <text x="1112" y="248" fill="#4ADE80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">STATE 03 / FULFILLMENT</text>
+  <text x="1112" y="290" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="600">Consumption Commit</text>
+  <text x="1112" y="334" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="19">Releases reservation on cancel</text>
+  <text x="1112" y="364" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="19">or deducts stock on completion</text>
+  <rect x="1112" y="408" width="352" height="52" rx="6" fill="#0B0D11" stroke="#363D4B" stroke-width="1.5"/>
+  <text x="1134" y="440" fill="#4ADE80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">Transactional audit trail</text>
+
+  <!-- Bottom panel: Multi-Tenant & Concurrency -->
+  <rect x="104" y="556" width="1392" height="332" rx="10" fill="#0B0D11" stroke="#252A34" stroke-width="2"/>
+  <text x="144" y="608" fill="#9BA1AD" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">DATA MODEL &amp; OPERATIONAL GUARANTEES</text>
+
+  <rect x="144" y="644" width="632" height="204" rx="8" fill="#141922" stroke="#252A34" stroke-width="1.5"/>
+  <text x="176" y="692" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600">Concurrent Job Integrity</text>
+  <text x="176" y="732" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="19">Atomic MySQL transactions prevent overselling paper and</text>
+  <text x="176" y="762" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="19">material stock when multiple printing orders arrive simultaneously.</text>
+  <text x="176" y="818" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">LARAVEL · PHP · MYSQL</text>
+
+  <rect x="816" y="644" width="640" height="204" rx="8" fill="#141922" stroke="#252A34" stroke-width="1.5"/>
+  <text x="848" y="692" fill="#F5F6F7" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600">Multi-Tenant Architecture Readiness</text>
+  <text x="848" y="732" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="19">Tenant-scoped inventory, order queues, and role permissions</text>
+  <text x="848" y="762" fill="#9BA1AD" font-family="system-ui, -apple-system, sans-serif" font-size="19">structured cleanly for expanding print-shop operations.</text>
+  <text x="848" y="818" fill="#4ADE80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">TENANT-SCOPED WORKFLOWS</text>
+</svg>
