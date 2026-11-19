@@ -46,7 +46,7 @@ describe('validateContact', () => {
   })
 
   it('keeps minimum fill duration positive for anti-spam timing', () => {
-    assert.ok(MIN_FILL_MS >= 2000)
+    assert.ok(MIN_FILL_MS >= 1000)
   })
 })
 

@@ -1,8 +1,8 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { Dictionary } from '@/i18n/get-dictionary'
-import { validateContact, type ContactField } from '@/lib/contact'
+import { MIN_FILL_MS, validateContact, type ContactField } from '@/lib/contact'
 import { AlertIcon, CheckIcon, LoaderIcon, SendIcon } from '@/lib/icons'
 import { cn } from '@/lib/utils'
 
@@ -26,7 +26,11 @@ export function ContactForm({ labels, topics, topicsLabel, configured }: Contact
   const [status, setStatus] = useState<Status>('idle')
   const [errors, setErrors] = useState<Partial<Record<ContactField, true>>>({})
   const [selectedTopics, setSelectedTopics] = useState<string[]>([])
-  const startedAt = useRef(Date.now())
+  const startedAt = useRef<number | null>(null)
+
+  useEffect(() => {
+    startedAt.current = performance.now()
+  }, [])
 
   const toggleTopic = (topic: string) =>
     setSelectedTopics((current) => (current.includes(topic) ? current.filter((t) => t !== topic) : [...current, topic]))
@@ -46,6 +50,8 @@ export function ContactForm({ labels, topics, topicsLabel, configured }: Contact
     }
 
     setStatus('sending')
+    const elapsedMs =
+      startedAt.current === null ? MIN_FILL_MS : Math.round(performance.now() - startedAt.current)
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -53,8 +59,8 @@ export function ContactForm({ labels, topics, topicsLabel, configured }: Contact
         body: JSON.stringify({
           ...result.values,
           topics: selectedTopics,
-          company: data.company ?? '',
-          startedAt: startedAt.current,
+          hp_field: data.hp_field ?? '',
+          elapsedMs,
         }),
       })
       const json = (await response.json().catch(() => ({}))) as { status?: Status; errors?: typeof errors }
@@ -62,6 +68,7 @@ export function ContactForm({ labels, topics, topicsLabel, configured }: Contact
         setStatus('sent')
         form.reset()
         setSelectedTopics([])
+        startedAt.current = performance.now()
       } else if (json.status === 'invalid') {
         setErrors(json.errors ?? {})
         setStatus('invalid')
@@ -160,8 +167,8 @@ export function ContactForm({ labels, topics, topicsLabel, configured }: Contact
       </div>
 
       <div aria-hidden="true" className="absolute -left-[9999px] size-px overflow-hidden">
-        <label htmlFor="contact-company">Company</label>
-        <input id="contact-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+        <label htmlFor="contact-hp">Leave this field empty</label>
+        <input id="contact-hp" name="hp_field" type="text" tabIndex={-1} autoComplete="new-password" />
       </div>
 
       <div aria-live="polite" role="status">

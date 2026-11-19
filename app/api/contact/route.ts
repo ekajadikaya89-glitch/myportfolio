@@ -44,9 +44,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ status: 'error' }, { status: 400, headers: NO_STORE_HEADERS })
   }
 
-  // Honeypot or too-fast submission: respond as success so bots learn nothing.
-  const elapsed = Date.now() - Number(body.startedAt ?? 0)
-  if (body.company || !Number.isFinite(elapsed) || elapsed < MIN_FILL_MS) {
+  // Honeypot or sub-second bot submission using monotonic client-measured duration
+  // (avoids false positives when client and server wall clocks differ).
+  const elapsedMs = Number(body.elapsedMs)
+  if (body.hp_field || !Number.isFinite(elapsedMs) || elapsedMs < MIN_FILL_MS) {
     return NextResponse.json({ status: 'sent' }, { headers: NO_STORE_HEADERS })
   }
 
@@ -67,14 +68,39 @@ export async function POST(request: Request) {
 
   const topics = Array.isArray(body.topics) ? body.topics.filter((t) => typeof t === 'string').slice(0, 6) : []
 
+  const upstreamHeaders: Record<string, string> = {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  }
+  const origin = request.headers.get('origin')
+  const referer = request.headers.get('referer')
+  if (origin) upstreamHeaders.Origin = origin
+  if (referer) upstreamHeaders.Referer = referer
+
+  const payload: Record<string, string> = {
+    name: values.name,
+    email: values.email,
+    _replyto: values.email,
+    subject: values.subject,
+    _subject: `[Portfolio] ${values.subject}`,
+    message: values.message,
+  }
+  if (topics.length > 0) {
+    payload.topics = topics.join(', ')
+  }
+
   try {
     const response = await fetch(endpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ ...values, topics: topics.join(', '), _subject: `[Portfolio] ${values.subject}` }),
+      headers: upstreamHeaders,
+      body: JSON.stringify(payload),
       signal: AbortSignal.timeout(10_000),
     })
-    if (!response.ok) throw new Error(`Delivery failed with ${response.status}`)
+    if (!response.ok) {
+      const detail = (await response.text().catch(() => '')).slice(0, 200)
+      console.error(`[contact] upstream rejected with ${response.status}: ${detail}`)
+      return NextResponse.json({ status: 'error' }, { status: 502, headers: NO_STORE_HEADERS })
+    }
     return NextResponse.json({ status: 'sent' }, { headers: NO_STORE_HEADERS })
   } catch (error) {
     console.error('[contact] delivery error', error instanceof Error ? error.message : error)

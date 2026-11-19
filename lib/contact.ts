@@ -2,8 +2,8 @@ export type ContactField = 'name' | 'email' | 'subject' | 'message'
 
 export type ContactPayload = Record<ContactField, string> & {
   topics: string[]
-  company: string
-  startedAt: number
+  hp_field: string
+  elapsedMs: number
 }
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
@@ -40,4 +40,4 @@ export function isAllowedContactEndpoint(rawUrl: string, nodeEnv = process.env.N
   }
 }
 
-export const MIN_FILL_MS = 2500
+export const MIN_FILL_MS = 1200

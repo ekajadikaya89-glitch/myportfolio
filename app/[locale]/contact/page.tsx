@@ -5,8 +5,11 @@ import { PageHeader } from '@/components/layout/page-header'
 import { siteConfig } from '@/content/site'
 import { isLocale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/get-dictionary'
+import { isAllowedContactEndpoint } from '@/lib/contact'
 import { ExternalLinkIcon, GitHubIcon, LinkedInIcon, MailIcon } from '@/lib/icons'
 import { buildMetadata } from '@/lib/seo'
+
+export const dynamic = 'force-dynamic'
 
 type PageProps = { params: Promise<{ locale: string }> }
 
@@ -38,7 +41,7 @@ export default async function ContactPage({ params }: PageProps) {
             labels={t.form}
             topics={t.categories}
             topicsLabel={t.categoriesLabel}
-            configured={Boolean(process.env.CONTACT_FORM_ENDPOINT)}
+            configured={isAllowedContactEndpoint(process.env.CONTACT_FORM_ENDPOINT?.trim() ?? '')}
           />
         </div>
         <aside className="flex flex-col gap-4 lg:sticky lg:top-24 lg:self-start">
