@@ -2,11 +2,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { CodeBlock } from '@/components/insights/code-block'
+import { ReadingProgress } from '@/components/insights/reading-progress'
 import { getArticle, publishedArticles } from '@/content/articles'
 import { siteConfig } from '@/content/site'
 import { isLocale, localePath, locales } from '@/i18n/config'
 import { getDictionary } from '@/i18n/get-dictionary'
-import { ArrowLeftIcon, ClockIcon, InfoIcon } from '@/lib/icons'
+import { ArrowLeftIcon, ArrowRightIcon, ClockIcon, InfoIcon } from '@/lib/icons'
 import { l } from '@/lib/localize'
 import { buildMetadata } from '@/lib/seo'
 import type { ArticleBlock } from '@/types/content'
@@ -71,6 +72,12 @@ export default async function ArticlePage({ params }: PageProps) {
   const blocks = l(article.body, locale)
   const toc = blocks.filter((block): block is Extract<ArticleBlock, { type: 'h2' }> => block.type === 'h2')
   const title = l(article.title, locale)
+  const currentIndex = publishedArticles.findIndex((item) => item.slug === article.slug)
+  const previousArticle = currentIndex > 0 ? publishedArticles[currentIndex - 1] : null
+  const nextArticle =
+    currentIndex >= 0 && currentIndex < publishedArticles.length - 1
+      ? publishedArticles[currentIndex + 1]
+      : null
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -84,6 +91,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
   return (
     <>
+      <ReadingProgress label={dict.insights.readingProgress} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
@@ -118,11 +126,49 @@ export default async function ArticlePage({ params }: PageProps) {
         </header>
 
         <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_220px]">
-          <div className="min-w-0 max-w-3xl">
-            {blocks.map((block, index) => (
-              <Block key={`${block.type}-${index}`} block={block} />
-            ))}
-          </div>
+            <div className="min-w-0 max-w-3xl">
+              {blocks.map((block, index) => (
+                <Block key={`${block.type}-${index}`} block={block} />
+              ))}
+
+              {previousArticle || nextArticle ? (
+                <nav
+                  aria-label={dict.nav.insights}
+                  className="mt-14 grid gap-4 border-t border-border pt-8 sm:grid-cols-2"
+                >
+                  {previousArticle ? (
+                    <Link
+                      href={localePath(locale, `/insights/${previousArticle.slug}`)}
+                      className="group flex flex-col gap-1.5 rounded-xl border border-border bg-card p-5 transition-colors hover:border-input hover:bg-elevated"
+                    >
+                      <span className="inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
+                        <ArrowLeftIcon className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
+                        <span>{dict.insights.previousArticle}</span>
+                      </span>
+                      <span className="text-sm font-semibold text-foreground">
+                        {l(previousArticle.title, locale)}
+                      </span>
+                    </Link>
+                  ) : (
+                    <div aria-hidden="true" />
+                  )}
+                  {nextArticle ? (
+                    <Link
+                      href={localePath(locale, `/insights/${nextArticle.slug}`)}
+                      className="group flex flex-col gap-1.5 rounded-xl border border-border bg-card p-5 text-left transition-colors hover:border-input hover:bg-elevated sm:text-right"
+                    >
+                      <span className="inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground sm:justify-end">
+                        <span>{dict.insights.nextArticle}</span>
+                        <ArrowRightIcon className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+                      </span>
+                      <span className="text-sm font-semibold text-foreground">
+                        {l(nextArticle.title, locale)}
+                      </span>
+                    </Link>
+                  ) : null}
+                </nav>
+              ) : null}
+            </div>
           {toc.length ? (
             <nav aria-label={dict.insights.toc} className="order-first lg:order-none lg:sticky lg:top-24 lg:self-start">
               <p className="mb-3 text-sm font-semibold text-foreground">{dict.insights.toc}</p>

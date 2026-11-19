@@ -8,6 +8,7 @@ import { siteConfig } from '@/content/site'
 import { education, skillGroups } from '@/content/skills'
 import { isLocale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/get-dictionary'
+import { DownloadIcon } from '@/lib/icons'
 import { l } from '@/lib/localize'
 import { buildMetadata } from '@/lib/seo'
 
@@ -42,7 +43,19 @@ export default async function ResumePage({ params }: PageProps) {
           <p className="font-mono text-xs font-medium text-brand">{t.eyebrow}</p>
           <p className="mt-1.5 text-sm text-muted-foreground">{t.description}</p>
         </div>
-        <PrintButton label={t.print} />
+        <div className="flex flex-wrap items-center gap-2.5">
+          {siteConfig.resumeFile ? (
+            <a
+              href={siteConfig.resumeFile}
+              download="Eka-Prasetyo-Resume.pdf"
+              className="inline-flex h-11 items-center gap-2 rounded-lg bg-foreground px-4 text-sm font-medium text-background transition-opacity hover:opacity-90 active:translate-y-px"
+            >
+              <DownloadIcon className="size-4" />
+              <span>{t.downloadPdf}</span>
+            </a>
+          ) : null}
+          <PrintButton label={t.print} />
+        </div>
       </div>
 
       <article className="rounded-xl border border-border bg-card p-6 md:p-10 print:border-0 print:p-0">

@@ -14,7 +14,7 @@ type LinkButtonProps = {
   href: string
   variant?: keyof typeof variants
   external?: boolean
-  download?: boolean
+  download?: boolean | string
   className?: string
   children: React.ReactNode
 }
@@ -28,7 +28,7 @@ export function LinkButton({ href, variant = 'primary', external, download, clas
         href={href}
         className={classes}
         {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-        {...(download ? { download: true } : {})}
+        {...(download ? { download } : {})}
       >
         {children}
       </a>

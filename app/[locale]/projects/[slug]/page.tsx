@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { LinkButton } from '@/components/layout/link-button'
 import { Reveal } from '@/components/layout/reveal'
 import { ProjectCard } from '@/components/projects/project-card'
+import { ScreenshotGallery } from '@/components/projects/screenshot-gallery'
 import { StatusBadge } from '@/components/projects/status-badge'
 import { getProject, projects } from '@/content/projects'
 import { isLocale, localePath, locales } from '@/i18n/config'
@@ -115,6 +116,21 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 ))}
               </dl>
             </section>
+
+            {project.screenshots?.length ? (
+              <ScreenshotGallery
+                screenshots={project.screenshots}
+                locale={locale}
+                labels={{
+                  heading: t.interfaceGallery,
+                  note: t.interfaceGalleryNote,
+                  openLightbox: t.openLightbox,
+                  closeLightbox: t.closeLightbox,
+                  prevShot: t.prevShot,
+                  nextShot: t.nextShot,
+                }}
+              />
+            ) : null}
 
             <section aria-labelledby="highlights">
               <h2 id="highlights" className="mb-5 text-2xl font-semibold tracking-tight">

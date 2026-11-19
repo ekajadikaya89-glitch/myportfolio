@@ -7,6 +7,7 @@ import { Hero } from '@/components/sections/hero'
 import { Introduction } from '@/components/sections/introduction'
 import { Philosophy } from '@/components/sections/philosophy'
 import { PortfolioAssistant } from '@/components/sections/portfolio-assistant'
+import { ProofStrip } from '@/components/sections/proof-strip'
 import { isLocale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/get-dictionary'
 import { buildMetadata } from '@/lib/seo'
@@ -27,6 +28,7 @@ export default async function HomePage({ params }: PageProps) {
   return (
     <>
       <Hero locale={locale} dict={dict} />
+      <ProofStrip locale={locale} dict={dict} />
       <Introduction dict={dict} />
       <Expertise locale={locale} dict={dict} />
       <FeaturedProjects locale={locale} dict={dict} />

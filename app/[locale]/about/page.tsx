@@ -5,9 +5,10 @@ import { Reveal } from '@/components/layout/reveal'
 import { FinalCta } from '@/components/sections/final-cta'
 import { Philosophy } from '@/components/sections/philosophy'
 import { education, professionalInterests } from '@/content/skills'
+import { siteConfig } from '@/content/site'
 import { isLocale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/get-dictionary'
-import { GraduationIcon } from '@/lib/icons'
+import { GitHubIcon, GraduationIcon, LinkedInIcon, MapPinIcon } from '@/lib/icons'
 import { l } from '@/lib/localize'
 import { buildMetadata } from '@/lib/seo'
 
@@ -39,6 +40,50 @@ export default async function AboutPage({ params }: PageProps) {
         </Reveal>
 
         <aside className="flex flex-col gap-6">
+          <Reveal className="overflow-hidden rounded-xl border border-border bg-card p-5">
+            <div className="flex items-center gap-4">
+              <div className="size-24 shrink-0 overflow-hidden rounded-xl border border-border bg-[#f4f6f9] sm:size-28">
+                <img
+                  src="/images/eka-prasetyo.jpg"
+                  alt={dict.about.portraitAlt}
+                  width={800}
+                  height={800}
+                  loading="eager"
+                  decoding="async"
+                  className="size-full object-cover object-top"
+                />
+              </div>
+              <div className="min-w-0">
+                <p className="text-lg font-semibold tracking-tight text-foreground">{siteConfig.name}</p>
+                <p className="mt-0.5 text-sm text-muted-foreground">AI Engineer &amp; Full-Stack Developer</p>
+                <p className="mt-2 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                  <MapPinIcon className="size-3.5 shrink-0 text-brand" />
+                  <span>{siteConfig.location}</span>
+                </p>
+                <div className="mt-3 flex items-center gap-2">
+                  <a
+                    href={siteConfig.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    className="inline-flex size-11 items-center justify-center rounded-md border border-input bg-background text-muted-foreground transition-colors hover:bg-elevated hover:text-foreground"
+                  >
+                    <GitHubIcon className="size-4" />
+                  </a>
+                  <a
+                    href={siteConfig.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="inline-flex size-11 items-center justify-center rounded-md border border-input bg-background text-muted-foreground transition-colors hover:bg-elevated hover:text-foreground"
+                  >
+                    <LinkedInIcon className="size-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
           <Reveal delay={0.04} className="rounded-xl border border-border bg-card p-6">
             <h2 className="mb-4 flex items-center gap-2 text-sm font-semibold text-foreground">
               <GraduationIcon className="size-4 text-brand" />

@@ -5,8 +5,10 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { localePath, type Locale } from '@/i18n/config'
+import type { Dictionary } from '@/i18n/get-dictionary'
 import { CloseIcon, FileDocIcon, MenuIcon } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import { CommandPalette } from './command-palette'
 import { LocaleSwitcher } from './locale-switcher'
 import { ThemeToggle } from './theme-toggle'
 import { Wordmark } from './wordmark'
@@ -18,6 +20,7 @@ type SiteHeaderProps = {
   items: NavItem[]
   resumeHref: string
   resumeIsFile: boolean
+  commandCopy: Dictionary['command']
   labels: {
     resume: string
     letsTalk: string
@@ -31,7 +34,7 @@ type SiteHeaderProps = {
   }
 }
 
-export function SiteHeader({ locale, items, resumeHref, resumeIsFile, labels }: SiteHeaderProps) {
+export function SiteHeader({ locale, items, resumeHref, resumeIsFile, commandCopy, labels }: SiteHeaderProps) {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
@@ -116,7 +119,7 @@ export function SiteHeader({ locale, items, resumeHref, resumeIsFile, labels }: 
       <div className="container-page flex h-16 items-center justify-between gap-3">
         <Wordmark href={localePath(locale, '/')} />
 
-        <nav aria-label={labels.primary} className="hidden lg:block">
+        <nav aria-label={labels.primary} className="hidden xl:block">
           <ul className="flex items-center gap-0.5">
             {items.map((item) => {
               const active = isActive(item.href)
@@ -126,7 +129,7 @@ export function SiteHeader({ locale, items, resumeHref, resumeIsFile, labels }: 
                     href={item.href}
                     aria-current={active ? 'page' : undefined}
                     className={cn(
-                      'relative inline-flex min-h-11 items-center rounded-md px-3 text-sm transition-colors active:translate-y-px',
+                      'relative inline-flex min-h-11 items-center whitespace-nowrap rounded-md px-2.5 text-sm transition-colors active:translate-y-px',
                       active
                         ? 'font-semibold text-foreground'
                         : 'text-muted-foreground hover:bg-elevated hover:text-foreground',
@@ -136,7 +139,7 @@ export function SiteHeader({ locale, items, resumeHref, resumeIsFile, labels }: 
                     {active ? (
                       <span
                         aria-hidden="true"
-                        className="absolute inset-x-3 bottom-1.5 h-0.5 bg-brand"
+                        className="absolute inset-x-2.5 bottom-1.5 h-0.5 bg-brand"
                       />
                     ) : null}
                   </Link>
@@ -146,29 +149,36 @@ export function SiteHeader({ locale, items, resumeHref, resumeIsFile, labels }: 
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
+          <CommandPalette
+            locale={locale}
+            navItems={items}
+            resumeHref={resumeHref}
+            resumeIsFile={resumeIsFile}
+            copy={commandCopy}
+          />
           <div className="hidden items-center gap-2 sm:flex">
             <LocaleSwitcher locale={locale} label={labels.language} />
             <ThemeToggle label={labels.theme} />
             <a
               href={resumeHref}
-              {...(resumeIsFile ? { download: true } : {})}
-              className="hidden h-11 items-center gap-1.5 rounded-lg border border-input bg-card px-3.5 text-sm font-medium text-foreground transition-colors hover:bg-elevated active:translate-y-px xl:inline-flex"
+              {...(resumeIsFile ? { download: 'Eka-Prasetyo-Resume.pdf' } : {})}
+              className="hidden h-11 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg border border-input bg-card px-3 text-sm font-medium text-foreground transition-colors hover:bg-elevated active:translate-y-px 2xl:inline-flex"
             >
-              <FileDocIcon className="size-4" />
+              <FileDocIcon className="size-4 shrink-0" />
               {labels.resume}
             </a>
           </div>
           <Link
             href={localePath(locale, '/contact')}
-            className="hidden h-11 items-center rounded-lg bg-foreground px-4 text-sm font-medium text-background transition-opacity hover:opacity-90 active:translate-y-px md:inline-flex"
+            className="hidden h-11 shrink-0 items-center whitespace-nowrap rounded-lg bg-foreground px-3.5 text-sm font-medium text-background transition-opacity hover:opacity-90 active:translate-y-px md:inline-flex"
           >
             {labels.letsTalk}
           </Link>
           <button
             ref={triggerRef}
             type="button"
-            className="inline-flex h-11 items-center gap-2 rounded-lg border border-input bg-card px-3 text-sm font-medium text-foreground transition-colors hover:bg-elevated active:translate-y-px lg:hidden"
+            className="inline-flex h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-lg border border-input bg-card px-3 text-sm font-medium text-foreground transition-colors hover:bg-elevated active:translate-y-px xl:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? labels.closeMenu : labels.openMenu}
@@ -192,7 +202,7 @@ export function SiteHeader({ locale, items, resumeHref, resumeIsFile, labels }: 
             animate={{ opacity: 1, height: 'calc(100dvh - 4rem)' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-y-auto border-t border-border bg-background lg:hidden"
+            className="overflow-y-auto border-t border-border bg-background xl:hidden"
           >
             <nav aria-label={labels.primary} className="container-page flex flex-col gap-7 py-6">
               <ul className="flex flex-col">
@@ -228,7 +238,7 @@ export function SiteHeader({ locale, items, resumeHref, resumeIsFile, labels }: 
                 </Link>
                 <a
                   href={resumeHref}
-                  {...(resumeIsFile ? { download: true } : {})}
+                  {...(resumeIsFile ? { download: 'Eka-Prasetyo-Resume.pdf' } : {})}
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-input bg-card text-sm font-medium text-foreground transition-colors hover:bg-elevated active:translate-y-px"
                 >
                   <FileDocIcon className="size-4" />

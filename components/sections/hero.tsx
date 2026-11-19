@@ -32,7 +32,11 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <LinkButton href={localePath(locale, '/contact')} variant="secondary">
               {dict.hero.secondaryCta}
             </LinkButton>
-            <LinkButton href={resume.href} download={resume.isFile} variant="ghost">
+            <LinkButton
+              href={resume.href}
+              download={resume.isFile ? 'Eka-Prasetyo-Resume.pdf' : false}
+              variant="ghost"
+            >
               <DownloadIcon />
               {dict.hero.resumeCta}
             </LinkButton>

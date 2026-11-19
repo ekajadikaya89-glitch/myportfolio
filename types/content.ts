@@ -18,6 +18,12 @@ export type ProjectFeature = {
   state: 'implemented' | 'planned'
 }
 
+export type ProjectScreenshot = {
+  src: string
+  alt: Localized
+  caption: Localized
+}
+
 export type Project = {
   slug: string
   name: string
@@ -34,6 +40,7 @@ export type Project = {
   stack: string[]
   image: string
   imageAlt: Localized
+  screenshots?: ProjectScreenshot[]
   links: { repo?: string; live?: string }
   recognition?: Localized
   featured?: boolean

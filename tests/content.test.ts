@@ -25,7 +25,26 @@ describe('portfolio content integrity', () => {
       assert.ok(project.image.startsWith('/projects/'), `Unexpected image path: ${project.image}`)
       const diskPath = path.join(process.cwd(), 'public', project.image.replace(/^\//, ''))
       assert.equal(fs.existsSync(diskPath), true, `Missing project asset on disk: ${diskPath}`)
+
+      if (project.screenshots?.length) {
+        for (const shot of project.screenshots) {
+          assert.ok(shot.src.startsWith('/projects/screenshots/'), `Unexpected screenshot path: ${shot.src}`)
+          const shotPath = path.join(process.cwd(), 'public', shot.src.replace(/^\//, ''))
+          assert.equal(fs.existsSync(shotPath), true, `Missing screenshot on disk: ${shotPath}`)
+        }
+      }
     }
+
+    assert.equal(
+      fs.existsSync(path.join(process.cwd(), 'public', 'images', 'eka-prasetyo.jpg')),
+      true,
+      'Missing portrait photo public/images/eka-prasetyo.jpg',
+    )
+    assert.equal(
+      fs.existsSync(path.join(process.cwd(), 'public', 'resume', 'eka-prasetyo.pdf')),
+      true,
+      'Missing ATS PDF resume public/resume/eka-prasetyo.pdf',
+    )
   })
 
   it('links achievements only to valid project slugs and verified https evidence URLs', () => {

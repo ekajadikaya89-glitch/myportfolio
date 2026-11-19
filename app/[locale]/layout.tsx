@@ -113,6 +113,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
               items={navItems}
               resumeHref={resume.href}
               resumeIsFile={resume.isFile}
+              commandCopy={dict.command}
               labels={{
                 resume: dict.nav.resume,
                 letsTalk: dict.nav.letsTalk,

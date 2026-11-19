@@ -58,7 +58,7 @@ export function PortfolioAssistant({ locale, copy }: Props) {
     result?.trace.mode === 'grounded-rag-llm' ? copy.modeLlm : copy.modeRetrieval
 
   return (
-    <section aria-labelledby="assistant-title" className="border-t border-border">
+    <section id="explorer" aria-labelledby="assistant-title" className="scroll-mt-20 border-t border-border">
       <div className="container-page grid gap-10 py-16 md:py-24 lg:grid-cols-[0.9fr_1.3fr] lg:gap-16">
         <div className="flex min-w-0 flex-col gap-4">
           <p className="font-mono text-xs font-medium text-brand">{copy.eyebrow}</p>

@@ -6,6 +6,7 @@ import { StatusBadge } from '@/components/projects/status-badge'
 import { featuredProjects } from '@/content/projects'
 import { localePath, type Locale } from '@/i18n/config'
 import type { Dictionary } from '@/i18n/get-dictionary'
+import { ExternalLinkIcon, GitHubIcon } from '@/lib/icons'
 import { l } from '@/lib/localize'
 import { cn } from '@/lib/utils'
 
@@ -94,11 +95,26 @@ export function FeaturedProjects({ locale, dict }: { locale: Locale; dict: Dicti
                         </li>
                       ))}
                     </ul>
-                    <div className="pt-1">
+                    <div className="flex flex-wrap items-center gap-2.5 pt-1">
                       <LinkButton href={href} variant="secondary">
                         {dict.common.viewDetails}
                         <span className="sr-only">: {project.name}</span>
                       </LinkButton>
+                      {project.links.live ? (
+                        <LinkButton href={project.links.live} external variant="ghost">
+                          <span>{dict.common.visitSite}</span>
+                          <ExternalLinkIcon className="size-3.5" />
+                          <span className="sr-only">: {project.name}</span>
+                        </LinkButton>
+                      ) : null}
+                      {project.links.repo ? (
+                        <LinkButton href={project.links.repo} external variant="ghost">
+                          <GitHubIcon className="size-4" />
+                          <span>GitHub</span>
+                          <ExternalLinkIcon className="size-3.5 opacity-70" />
+                          <span className="sr-only">: {project.name}</span>
+                        </LinkButton>
+                      ) : null}
                     </div>
                   </Reveal>
                 </article>

@@ -74,6 +74,41 @@ export const projects: Project[] = [
       en: 'DevFlow AI architecture schematic showing repository context, agent workflow engine, pull request review gate, execution workers, and persistence',
       id: 'Diagram arsitektur DevFlow AI yang menampilkan konteks repositori, mesin orkestrasi agen, gerbang ulasan PR, worker eksekusi, dan penyimpanan',
     },
+    screenshots: [
+      {
+        src: '/projects/screenshots/devflow-ai-dashboard.webp',
+        alt: {
+          en: 'DevFlow AI main workspace dashboard displaying project KPIs, open stories, token usage, and recent activity feed',
+          id: 'Dasbor utama DevFlow AI menampilkan metrik proyek, story aktif, penggunaan token, dan feed aktivitas terbaru',
+        },
+        caption: {
+          en: 'Workspace dashboard tracking active projects, sprint stories, execution runs, and approval activity.',
+          id: 'Dasbor workspace untuk memantau proyek aktif, story sprint, eksekusi agen, dan log persetujuan.',
+        },
+      },
+      {
+        src: '/projects/screenshots/devflow-ai-planning.webp',
+        alt: {
+          en: 'DevFlow AI multi-agent planning interface with draft PRD and backlog review before approval',
+          id: 'Antarmuka perencanaan multi-agen DevFlow AI dengan draf PRD dan backlog sebelum persetujuan',
+        },
+        caption: {
+          en: 'Draft-first 7-agent planning workspace generating structured PRDs and backlogs for human review.',
+          id: 'Workspace perencanaan 7 agen berbasis draf yang menghasilkan PRD dan backlog terstruktur untuk ulasan manusia.',
+        },
+      },
+      {
+        src: '/projects/screenshots/devflow-ai-kanban.webp',
+        alt: {
+          en: 'DevFlow AI Scrum Kanban board displaying backlog, sprint workflow states, and task cards',
+          id: 'Papan Kanban Scrum DevFlow AI menampilkan backlog, status alur sprint, dan kartu tugas',
+        },
+        caption: {
+          en: 'Agile Scrum Kanban board enforced by a centralized workflow state machine.',
+          id: 'Papan Kanban Agile Scrum yang dijaga oleh state machine alur kerja terpusat.',
+        },
+      },
+    ],
     links: { repo: 'https://github.com/eka0789/devflow-ai' },
   },
   {
@@ -123,6 +158,41 @@ export const projects: Project[] = [
       en: 'IndustrialVision AI architecture diagram connecting station image capture, FastAPI Python vision inference and model registry, live WebSocket feed, React 19 operator console, and PostgreSQL evidence logging',
       id: 'Diagram arsitektur IndustrialVision AI yang menghubungkan pengambilan gambar stasiun, inferensi visi FastAPI Python dan registri model, feed WebSocket real-time, konsol React 19, dan log bukti PostgreSQL',
     },
+    screenshots: [
+      {
+        src: '/projects/screenshots/industrialvision-ai-overview.webp',
+        alt: {
+          en: 'IndustrialVision AI operations control room showing live feed status, quality index, decision timeline, and station fleet',
+          id: 'Ruang kendali IndustrialVision AI menampilkan status feed langsung, indeks mutu, jejak keputusan, dan stasiun kamera',
+        },
+        caption: {
+          en: 'Operations control room displaying live feed status, quality index, recent decision trail, and connected stations.',
+          id: 'Ruang kendali operasional yang menampilkan status feed real-time, indeks mutu, jejak keputusan, dan status stasiun.',
+        },
+      },
+      {
+        src: '/projects/screenshots/industrialvision-ai-inspection.webp',
+        alt: {
+          en: 'IndustrialVision AI inspection detail screen showing structured PASS/FAIL/REVIEW verdict, bounding evidence, and audit trace',
+          id: 'Tampilan detail inspeksi IndustrialVision AI menunjukkan keputusan PASS/FAIL/REVIEW, bukti visual, dan jejak audit',
+        },
+        caption: {
+          en: 'Inspection detail view with structured model verdict, latency metrics, and traceable evidence record.',
+          id: 'Tampilan detail inspeksi dengan keputusan model terstruktur, latensi, dan pencatatan bukti audit.',
+        },
+      },
+      {
+        src: '/projects/screenshots/industrialvision-ai-agent.webp',
+        alt: {
+          en: 'IndustrialVision AI Operations Agent console answering quality control queries from inspection logs',
+          id: 'Konsol Operations Agent IndustrialVision AI yang menjawab pertanyaan kendali mutu dari log inspeksi',
+        },
+        caption: {
+          en: 'Operations Agent console for querying station anomalies, defect trends, and maintenance insights.',
+          id: 'Konsol Operations Agent untuk menanyakan anomali stasiun, tren cacat produk, dan wawasan perawatan.',
+        },
+      },
+    ],
     links: { repo: 'https://github.com/eka0789/industrialvision-ai-platform' },
   },
   {
@@ -311,6 +381,30 @@ export const projects: Project[] = [
       en: 'RuangKumpul ecosystem schematic connecting shared tools, curated knowledge, and community discussion channels on Next.js and Supabase',
       id: 'Diagram ekosistem RuangKumpul yang menghubungkan alat bersama, pengetahuan terkurasi, dan kanal diskusi komunitas di Next.js dan Supabase',
     },
+    screenshots: [
+      {
+        src: '/projects/screenshots/ruangkumpul-home.webp',
+        alt: {
+          en: 'RuangKumpul live homepage featuring unified platform search across free tools, articles, events, and communities',
+          id: 'Beranda live RuangKumpul menampilkan pencarian terpadu untuk tools gratis, artikel, event, dan komunitas',
+        },
+        caption: {
+          en: 'Live landing view on ruangkumpul.my.id unifying tools, articles, events, careers, and community hubs.',
+          id: 'Tampilan utama live di ruangkumpul.my.id yang menyatukan tools, artikel, event, karier, dan komunitas.',
+        },
+      },
+      {
+        src: '/projects/screenshots/ruangkumpul-tools.webp',
+        alt: {
+          en: 'RuangKumpul featured free browser tools grid including word counter, QR generator, JSON formatter, and PDF merger',
+          id: 'Katalog tools unggulan gratis RuangKumpul termasuk penghitung kata, generator QR, JSON formatter, dan gabung PDF',
+        },
+        caption: {
+          en: 'Browser-native utility directory offering instant free tools without requiring sign-in.',
+          id: 'Direktori utilitas browser yang menyediakan tools gratis langsung pakai tanpa login.',
+        },
+      },
+    ],
     links: {
       live: 'https://ruangkumpul.my.id/',
       repo: 'https://github.com/eka0789/ruangkumpul',
@@ -348,6 +442,30 @@ export const projects: Project[] = [
       en: 'JasaIT platform architecture diagram showing service catalog, business solution framing, and consultation scoping workflow built with Next.js',
       id: 'Diagram arsitektur platform JasaIT yang menampilkan katalog layanan, penyusunan solusi bisnis, dan alur konsultasi yang dibangun dengan Next.js',
     },
+    screenshots: [
+      {
+        src: '/projects/screenshots/jasait-home.webp',
+        alt: {
+          en: 'JasaIT live homepage showing issue search bar and Smart Match verified technician recommendations with price estimates',
+          id: 'Beranda live JasaIT menampilkan pencarian kendala TI dan kartu Smart Match rekomendasi teknisi terverifikasi dengan estimasi biaya',
+        },
+        caption: {
+          en: 'Live homepage on jasait.my.id featuring AI-assisted Smart Match technician discovery and transparent estimates.',
+          id: 'Beranda live di jasait.my.id dengan pencarian Smart Match berbantuan AI dan estimasi biaya transparan.',
+        },
+      },
+      {
+        src: '/projects/screenshots/jasait-services.webp',
+        alt: {
+          en: 'JasaIT service categories catalog covering laptop repair, network WiFi, server cloud, CCTV security, web apps, and business IT support',
+          id: 'Katalog kategori layanan JasaIT mencakup perbaikan laptop, jaringan WiFi, server cloud, CCTV, web aplikasi, dan dukungan TI bisnis',
+        },
+        caption: {
+          en: 'Structured IT service catalog guiding individuals and businesses directly to the right service scope.',
+          id: 'Katalog layanan TI terstruktur yang memandu pengguna individu maupun bisnis ke cakupan layanan yang tepat.',
+        },
+      },
+    ],
     links: { live: 'https://www.jasait.my.id/' },
   },
   {

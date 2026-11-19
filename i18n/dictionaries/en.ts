@@ -74,6 +74,35 @@ export const en = {
     pauseShort: 'Pause',
     playShort: 'Play',
   },
+  proofStrip: {
+    regionLabel: 'Verified career and recognition highlights',
+    items: [
+      {
+        label: 'Active Role',
+        value: 'Snoba Indonesia',
+        meta: 'Dec 2025 - Present · Remote',
+        href: '/experience',
+      },
+      {
+        label: 'Verified Award',
+        value: '3rd Place, BPKH RI & UI',
+        meta: 'Oct 2026 · Public certificate',
+        href: '/achievements',
+      },
+      {
+        label: 'Verified Hackathon',
+        value: 'Indonesia Web3 Hackathon',
+        meta: 'Nov 2026 · AI & Web3 Track',
+        href: '/achievements',
+      },
+      {
+        label: 'Technical Mentorship',
+        value: 'Gamelab Indonesia',
+        meta: '2022 - 2025 · Course Instructor',
+        href: '/experience',
+      },
+    ],
+  },
   intro: {
     eyebrow: '01 / Approach',
     title: 'Engineering Beyond Code.',
@@ -162,6 +191,7 @@ export const en = {
     recruiterTitle: 'Recruiter summary',
     recruiterSummary:
       'Full-stack and AI application engineer working across Laravel, Next.js, FastAPI, Go, and Flutter. Experienced in building inventory and operational business systems, backend services, and LLM-integrated product architectures. Comfortable owning delivery from architecture through deployment.',
+    portraitAlt: 'Professional portrait of Eka Prasetyo, AI Engineer and Full-Stack Developer',
   },
   skills: {
     eyebrow: 'Expertise',
@@ -180,7 +210,7 @@ export const en = {
     filterLabel: 'Filter projects by category',
     all: 'All',
     empty: 'No projects are published in this category yet.',
-    emptyHint: 'Reset the filter to inspect all eight documented projects.',
+    emptyHint: 'Reset the filter to inspect all nine documented projects.',
     resetFilter: 'Show all projects',
     categories: {
       ai: 'AI & Machine Learning',
@@ -192,6 +222,12 @@ export const en = {
       devtools: 'Developer Tools',
     },
     overview: 'Architecture overview',
+    interfaceGallery: 'Product interface',
+    interfaceGalleryNote: 'Captured directly from the implemented application and live deployment.',
+    openLightbox: 'Inspect full-size screenshot',
+    closeLightbox: 'Close screenshot preview',
+    prevShot: 'Previous screenshot',
+    nextShot: 'Next screenshot',
     highlights: 'Key technical capabilities',
     features: 'Product scope',
     recognition: 'Recognition',
@@ -228,6 +264,9 @@ export const en = {
     emptyHint: 'Check the upcoming technical topics below or revisit after new notes are released.',
     toc: 'On this page',
     comingSoon: 'In preparation',
+    readingProgress: 'Reading progress',
+    previousArticle: 'Previous article',
+    nextArticle: 'Next article',
   },
   contact: {
     eyebrow: 'Contact',
@@ -279,6 +318,7 @@ export const en = {
     title: 'Resume',
     description: 'A printable summary of my profile, technical stack, experience, and selected projects.',
     print: 'Print / Save as PDF',
+    downloadPdf: 'Download PDF',
     summary: 'Professional summary',
     skills: 'Technical skills',
     experience: 'Experience',
@@ -331,6 +371,28 @@ export const en = {
     hideTrace: 'Hide retrieval trace',
     validationError: 'Please enter at least 2 characters.',
     requestError: 'Unable to process this query right now. Please try again shortly.',
+  },
+  command: {
+    trigger: 'Quick jump',
+    triggerLabel: 'Open quick navigation palette (Ctrl+K or Command+K)',
+    dialogLabel: 'Quick navigation and actions',
+    placeholder: 'Search projects, stack, pages, certificates, or actions...',
+    empty: 'No matching pages, projects, or actions found.',
+    hint: 'Use arrow keys to navigate, Enter to open, Esc to close.',
+    close: 'Close',
+    groups: {
+      actions: 'Quick actions',
+      projects: 'Projects',
+      certificates: 'Verified 2026 certificates',
+      pages: 'Pages',
+    },
+    openExplorer: 'Jump to Grounded Portfolio Explorer',
+    downloadResume: 'Download ATS PDF Resume',
+    webResume: 'Open Interactive Web Resume',
+    copyEmail: 'Copy direct email address',
+    emailCopied: 'Email copied to clipboard',
+    toggleTheme: 'Toggle light / dark theme',
+    switchLanguage: 'Switch language to Indonesian',
   },
 }
 

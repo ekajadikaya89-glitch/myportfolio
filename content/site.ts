@@ -18,8 +18,8 @@ export const siteConfig = {
   /** Optional scheduling link (e.g. https://cal.com/your-handle). Set NEXT_PUBLIC_CALENDAR_URL to display it. */
   calendarUrl: process.env.NEXT_PUBLIC_CALENDAR_URL?.trim() || null,
   /**
-   * Path to a resume file inside /public (e.g. "/resume/eka-prasetyo.pdf").
-   * When null, the resume CTA opens the printable resume page instead.
+   * Path to a resume file inside /public (default: "/resume/eka-prasetyo.pdf").
+   * Override with NEXT_PUBLIC_RESUME_FILE if hosted at a different path.
    */
-  resumeFile: process.env.NEXT_PUBLIC_RESUME_FILE?.trim() || null,
+  resumeFile: process.env.NEXT_PUBLIC_RESUME_FILE?.trim() || '/resume/eka-prasetyo.pdf',
 } as const

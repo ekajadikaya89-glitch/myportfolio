@@ -4,7 +4,7 @@ export function Wordmark({ href }: { href: string }) {
   return (
     <Link
       href={href}
-      className="group inline-flex min-h-11 items-center gap-2.5 rounded-lg pr-1 transition-opacity active:opacity-80"
+      className="group inline-flex min-h-11 shrink-0 items-center gap-2.5 whitespace-nowrap rounded-lg pr-1 transition-opacity active:opacity-80"
       aria-label="Eka Prasetyo, Home"
     >
       <span
