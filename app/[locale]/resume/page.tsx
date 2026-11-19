@@ -69,25 +69,27 @@ export default async function ResumePage({ params }: PageProps) {
         </ResumeSection>
 
         <ResumeSection title={t.experience}>
-          {experience.map((entry) => (
-            <div key={entry.id} className="mb-5 last:mb-0">
-              <h3 className="font-semibold text-foreground">
-                {l(entry.title, locale)} | {entry.organization}
-              </h3>
-              {entry.period ? <p className="text-sm text-muted-foreground">{entry.period}</p> : null}
-              <ul className="mt-2 list-disc pl-5 text-sm leading-relaxed text-muted-foreground">
-                {l(entry.responsibilities, locale).map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              {entry.projects?.length ? (
-                <p className="mt-2 text-sm">
-                  <span className="font-medium text-foreground">{dict.experiencePage.projects}:</span>{' '}
-                  <span className="text-muted-foreground">{entry.projects.join(', ')}</span>
-                </p>
-              ) : null}
-            </div>
-          ))}
+          {experience
+            .filter((entry) => entry.kind === 'role')
+            .map((entry) => (
+              <div key={entry.id} className="mb-5 last:mb-0">
+                <h3 className="font-semibold text-foreground">
+                  {l(entry.title, locale)} | {entry.organization}
+                </h3>
+                {entry.period ? <p className="text-sm text-muted-foreground">{entry.period}</p> : null}
+                <ul className="mt-2 list-disc pl-5 text-sm leading-relaxed text-muted-foreground">
+                  {l(entry.responsibilities, locale).map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                {entry.projects?.length ? (
+                  <p className="mt-2 text-sm">
+                    <span className="font-medium text-foreground">{dict.experiencePage.projects}:</span>{' '}
+                    <span className="text-muted-foreground">{entry.projects.join(', ')}</span>
+                  </p>
+                ) : null}
+              </div>
+            ))}
         </ResumeSection>
 
         <ResumeSection title={t.projects}>

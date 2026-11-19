@@ -53,6 +53,14 @@ describe('portfolio content integrity', () => {
     }
   })
 
+  it('includes verified dates across all professional experience entries', () => {
+    const roles = experience.filter((entry) => entry.kind === 'role')
+    assert.ok(roles.length >= 6)
+    for (const entry of experience) {
+      assert.ok(entry.period && entry.period.trim().length > 0, `Missing verified period for ${entry.id}`)
+    }
+  })
+
   it('contains zero em dashes across all content collections (R-02)', () => {
     const all = [
       ...collectStrings(projects),

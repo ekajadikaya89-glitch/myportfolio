@@ -38,6 +38,16 @@ describe('portfolio assistant guardrails and grounded retrieval', () => {
     }
   })
 
+  it('retrieves verified LinkedIn career history with accurate dates', () => {
+    const { chunks } = retrieveGroundedChunks('Snoba Indonesia IMP Studio Gamelab instructor', 'en', 4)
+    const ids = chunks.map((c) => c.id)
+    assert.ok(ids.includes('experience:snoba'))
+    assert.ok(ids.includes('experience:imp-studio'))
+    assert.ok(ids.includes('experience:gamelab-indonesia'))
+    const snoba = chunks.find((c) => c.id === 'experience:snoba')
+    assert.ok(snoba?.title.includes('Dec 2025 - Present'))
+  })
+
   it('returns an honest out-of-scope response when no chunks match', () => {
     const answer = synthesizeDeterministicAnswer([], 'en')
     assert.match(answer, /outside the verified portfolio records/i)

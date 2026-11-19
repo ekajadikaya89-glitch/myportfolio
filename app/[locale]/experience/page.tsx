@@ -50,7 +50,13 @@ export default async function ExperiencePage({ params }: PageProps) {
                 </header>
                 <p className="mt-4 leading-relaxed text-muted-foreground">{l(entry.summary, locale)}</p>
 
-                <div className="mt-7 grid gap-8 border-t border-border pt-6 md:grid-cols-2">
+                <div
+                  className={
+                    entry.projects?.length
+                      ? 'mt-7 grid gap-8 border-t border-border pt-6 md:grid-cols-2'
+                      : 'mt-7 border-t border-border pt-6'
+                  }
+                >
                   <div>
                     <h3 className="mb-3 text-sm font-semibold text-foreground">{t.responsibilities}</h3>
                     <ul className="flex flex-col gap-2.5 text-sm text-muted-foreground">
