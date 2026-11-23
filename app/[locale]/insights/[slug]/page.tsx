@@ -139,7 +139,7 @@ export default async function ArticlePage({ params }: PageProps) {
                   {previousArticle ? (
                     <Link
                       href={localePath(locale, `/insights/${previousArticle.slug}`)}
-                      className="group flex flex-col gap-1.5 rounded-xl border border-border bg-card p-5 transition-colors hover:border-input hover:bg-elevated"
+                      className="group flex flex-col gap-1.5 rounded-xl border border-border bg-card p-5 transition-colors hover:border-input hover:bg-elevated active:translate-y-px"
                     >
                       <span className="inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
                         <ArrowLeftIcon className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
@@ -155,7 +155,7 @@ export default async function ArticlePage({ params }: PageProps) {
                   {nextArticle ? (
                     <Link
                       href={localePath(locale, `/insights/${nextArticle.slug}`)}
-                      className="group flex flex-col gap-1.5 rounded-xl border border-border bg-card p-5 text-left transition-colors hover:border-input hover:bg-elevated sm:text-right"
+                      className="group flex flex-col gap-1.5 rounded-xl border border-border bg-card p-5 text-left transition-colors hover:border-input hover:bg-elevated active:translate-y-px sm:text-right"
                     >
                       <span className="inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground sm:justify-end">
                         <span>{dict.insights.nextArticle}</span>
@@ -172,12 +172,12 @@ export default async function ArticlePage({ params }: PageProps) {
           {toc.length ? (
             <nav aria-label={dict.insights.toc} className="order-first lg:order-none lg:sticky lg:top-24 lg:self-start">
               <p className="mb-3 text-sm font-semibold text-foreground">{dict.insights.toc}</p>
-              <ol className="flex flex-col gap-1 border-l border-border text-sm">
+              <ol className="flex flex-col border-l border-border text-sm">
                 {toc.map((item) => (
                   <li key={item.id}>
                     <a
                       href={`#${item.id}`}
-                      className="-ml-px block rounded-r-md border-l border-transparent py-1.5 pl-4 text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+                      className="-ml-px flex min-h-11 items-center rounded-r-md border-l border-transparent py-2 pl-4 text-muted-foreground transition-colors hover:border-foreground hover:text-foreground active:translate-y-px"
                     >
                       {item.text}
                     </a>

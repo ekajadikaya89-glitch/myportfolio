@@ -55,7 +55,7 @@ export default async function AboutPage({ params }: PageProps) {
               </div>
               <div className="min-w-0">
                 <p className="text-lg font-semibold tracking-tight text-foreground">{siteConfig.name}</p>
-                <p className="mt-0.5 text-sm text-muted-foreground">AI Engineer &amp; Full-Stack Developer</p>
+                <p className="mt-0.5 text-sm text-muted-foreground">{dict.about.roleTitle}</p>
                 <p className="mt-2 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
                   <MapPinIcon className="size-3.5 shrink-0 text-brand" />
                   <span>{siteConfig.location}</span>
@@ -66,7 +66,7 @@ export default async function AboutPage({ params }: PageProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub"
-                    className="inline-flex size-11 items-center justify-center rounded-md border border-input bg-background text-muted-foreground transition-colors hover:bg-elevated hover:text-foreground"
+                    className="inline-flex size-11 items-center justify-center rounded-md border border-input bg-background text-muted-foreground transition-colors hover:bg-elevated hover:text-foreground active:translate-y-px"
                   >
                     <GitHubIcon className="size-4" />
                   </a>
@@ -75,7 +75,7 @@ export default async function AboutPage({ params }: PageProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
-                    className="inline-flex size-11 items-center justify-center rounded-md border border-input bg-background text-muted-foreground transition-colors hover:bg-elevated hover:text-foreground"
+                    className="inline-flex size-11 items-center justify-center rounded-md border border-input bg-background text-muted-foreground transition-colors hover:bg-elevated hover:text-foreground active:translate-y-px"
                   >
                     <LinkedInIcon className="size-4" />
                   </a>

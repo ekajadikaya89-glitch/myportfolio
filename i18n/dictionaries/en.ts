@@ -191,6 +191,7 @@ export const en = {
     recruiterTitle: 'Recruiter summary',
     recruiterSummary:
       'Full-stack and AI application engineer working across Laravel, Next.js, FastAPI, Go, and Flutter. Experienced in building inventory and operational business systems, backend services, and LLM-integrated product architectures. Comfortable owning delivery from architecture through deployment.',
+    roleTitle: 'AI Engineer & Full-Stack Developer',
     portraitAlt: 'Professional portrait of Eka Prasetyo, AI Engineer and Full-Stack Developer',
   },
   skills: {
@@ -361,6 +362,7 @@ export const en = {
     inputPlaceholder: 'e.g. Which projects use FastAPI, Flutter, or LangGraph?',
     submit: 'Run query',
     submitting: 'Querying...',
+    loadingState: 'Searching verified portfolio records...',
     emptyState:
       'Pick a recruiter prompt on the left or enter your own question. Every answer cites verified pages or certificates and exposes the retrieval trace.',
     citationsLabel: 'Verified sources',
@@ -378,6 +380,7 @@ export const en = {
     dialogLabel: 'Quick navigation and actions',
     placeholder: 'Search projects, stack, pages, certificates, or actions...',
     empty: 'No matching pages, projects, or actions found.',
+    resetSearch: 'Clear search',
     hint: 'Use arrow keys to navigate, Enter to open, Esc to close.',
     close: 'Close',
     groups: {

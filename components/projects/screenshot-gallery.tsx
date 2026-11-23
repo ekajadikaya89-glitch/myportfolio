@@ -22,6 +22,7 @@ type Props = {
 
 export function ScreenshotGallery({ screenshots, locale, labels }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const dialogRef = useRef<HTMLDivElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const lastTriggerRef = useRef<HTMLButtonElement | null>(null)
 
@@ -44,6 +45,22 @@ export function ScreenshotGallery({ screenshots, locale, labels }: Props) {
       if (event.key === 'Escape') {
         event.preventDefault()
         setActiveIndex(null)
+      } else if (event.key === 'Tab' && dialogRef.current) {
+        const focusable = Array.from(
+          dialogRef.current.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          ),
+        )
+        if (focusable.length === 0) return
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault()
+          last.focus()
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault()
+          first.focus()
+        }
       } else if (event.key === 'ArrowRight' && total > 1) {
         event.preventDefault()
         setActiveIndex((current) => (current === null ? 0 : (current + 1) % total))
@@ -89,6 +106,8 @@ export function ScreenshotGallery({ screenshots, locale, labels }: Props) {
                   <img
                     src={shot.src}
                     alt={alt}
+                    width={1440}
+                    height={900}
                     loading="lazy"
                     decoding="async"
                     className="aspect-[16/10] w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.015]"
@@ -114,10 +133,11 @@ export function ScreenshotGallery({ screenshots, locale, labels }: Props) {
           role="dialog"
           aria-modal="true"
           aria-label={l(activeShot.caption, locale)}
-          className="fixed inset-0 z-[70] flex items-center justify-center bg-background/90 p-4 backdrop-blur-sm sm:p-8"
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-background/90 p-4 sm:p-8"
           onClick={() => setActiveIndex(null)}
         >
           <div
+            ref={dialogRef}
             className="flex max-h-full w-full max-w-5xl flex-col overflow-hidden rounded-xl border border-border bg-card shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
@@ -132,7 +152,7 @@ export function ScreenshotGallery({ screenshots, locale, labels }: Props) {
                       type="button"
                       aria-label={labels.prevShot}
                       onClick={() => setActiveIndex((activeIndex - 1 + total) % total)}
-                      className="inline-flex size-11 items-center justify-center rounded-lg border border-input bg-background text-foreground transition-colors hover:bg-elevated"
+                      className="inline-flex size-11 items-center justify-center rounded-lg border border-input bg-background text-foreground transition-colors hover:bg-elevated active:translate-y-px"
                     >
                       <ChevronLeftIcon className="size-4" />
                     </button>
@@ -140,7 +160,7 @@ export function ScreenshotGallery({ screenshots, locale, labels }: Props) {
                       type="button"
                       aria-label={labels.nextShot}
                       onClick={() => setActiveIndex((activeIndex + 1) % total)}
-                      className="inline-flex size-11 items-center justify-center rounded-lg border border-input bg-background text-foreground transition-colors hover:bg-elevated"
+                      className="inline-flex size-11 items-center justify-center rounded-lg border border-input bg-background text-foreground transition-colors hover:bg-elevated active:translate-y-px"
                     >
                       <ChevronRightIcon className="size-4" />
                     </button>
@@ -151,7 +171,7 @@ export function ScreenshotGallery({ screenshots, locale, labels }: Props) {
                   type="button"
                   aria-label={labels.closeLightbox}
                   onClick={() => setActiveIndex(null)}
-                  className="inline-flex size-11 items-center justify-center rounded-lg border border-input bg-background text-foreground transition-colors hover:bg-elevated"
+                  className="inline-flex size-11 items-center justify-center rounded-lg border border-input bg-background text-foreground transition-colors hover:bg-elevated active:translate-y-px"
                 >
                   <CloseIcon className="size-4" />
                 </button>
@@ -161,6 +181,8 @@ export function ScreenshotGallery({ screenshots, locale, labels }: Props) {
               <img
                 src={activeShot.src}
                 alt={l(activeShot.alt, locale)}
+                width={1440}
+                height={900}
                 className="mx-auto max-h-[72dvh] w-auto max-w-full rounded-md border border-border object-contain"
               />
             </div>

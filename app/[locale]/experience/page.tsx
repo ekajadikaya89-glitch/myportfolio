@@ -28,7 +28,7 @@ export default async function ExperiencePage({ params }: PageProps) {
     <>
       <PageHeader eyebrow={t.eyebrow} title={t.title} description={t.description} />
       <section className="container-page py-16 md:py-24">
-        <ol className="relative flex flex-col gap-10 border-l border-border pl-7 md:pl-11">
+        <ol className="relative ml-4 flex flex-col gap-10 border-l border-border pl-7 md:ml-5 md:pl-11">
           {experience.map((entry) => (
             <Reveal as="li" key={entry.id} className="relative">
               <span

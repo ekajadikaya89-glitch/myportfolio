@@ -156,6 +156,7 @@ export function SiteHeader({ locale, items, resumeHref, resumeIsFile, commandCop
             resumeHref={resumeHref}
             resumeIsFile={resumeIsFile}
             copy={commandCopy}
+            onBeforeOpen={() => setOpen(false)}
           />
           <div className="hidden items-center gap-2 sm:flex">
             <LocaleSwitcher locale={locale} label={labels.language} />
@@ -163,7 +164,7 @@ export function SiteHeader({ locale, items, resumeHref, resumeIsFile, commandCop
             <a
               href={resumeHref}
               {...(resumeIsFile ? { download: 'Eka-Prasetyo-Resume.pdf' } : {})}
-              className="hidden h-11 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg border border-input bg-card px-3 text-sm font-medium text-foreground transition-colors hover:bg-elevated active:translate-y-px 2xl:inline-flex"
+              className="hidden h-11 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg border border-input bg-card px-3 text-sm font-medium text-foreground transition-colors hover:bg-elevated active:translate-y-px lg:inline-flex"
             >
               <FileDocIcon className="size-4 shrink-0" />
               {labels.resume}

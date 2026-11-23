@@ -62,7 +62,7 @@ export default async function ResumePage({ params }: PageProps) {
         <header className="pb-7">
           <h1 className="text-3xl font-semibold tracking-tight md:text-5xl">{siteConfig.name}</h1>
           <p className="mt-2 text-base text-muted-foreground md:text-lg">
-            AI Engineer &amp; Full-Stack Developer · {siteConfig.location}
+            {dict.about.roleTitle} · {siteConfig.location}
           </p>
         </header>
 
@@ -140,10 +140,40 @@ export default async function ResumePage({ params }: PageProps) {
         </ResumeSection>
 
         <ResumeSection title={t.contact}>
-          <ul className="flex flex-col gap-1 text-sm text-foreground">
-            <li>LinkedIn: {siteConfig.linkedin.replace('https://www.', '')}</li>
-            <li>GitHub: {siteConfig.github.replace('https://', '')}</li>
-            {siteConfig.email ? <li>Email: {siteConfig.email}</li> : null}
+          <ul className="flex flex-col gap-1.5 text-sm text-foreground">
+            <li>
+              LinkedIn:{' '}
+              <a
+                href={siteConfig.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand underline-offset-4 hover:underline"
+              >
+                {siteConfig.linkedin.replace('https://www.', '')}
+              </a>
+            </li>
+            <li>
+              GitHub:{' '}
+              <a
+                href={siteConfig.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand underline-offset-4 hover:underline"
+              >
+                {siteConfig.github.replace('https://', '')}
+              </a>
+            </li>
+            {siteConfig.email ? (
+              <li>
+                Email:{' '}
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="text-brand underline-offset-4 hover:underline"
+                >
+                  {siteConfig.email}
+                </a>
+              </li>
+            ) : null}
           </ul>
         </ResumeSection>
       </article>

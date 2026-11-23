@@ -193,6 +193,7 @@ export const id: Dictionary = {
     recruiterTitle: 'Ringkasan untuk rekruter',
     recruiterSummary:
       'Full-stack dan AI application engineer yang bekerja dengan Laravel, Next.js, FastAPI, Go, dan Flutter. Berpengalaman membangun sistem inventaris dan operasional bisnis, layanan backend, serta arsitektur produk berbasis LLM. Terbiasa memegang delivery dari arsitektur hingga deployment.',
+    roleTitle: 'AI Engineer & Pengembang Full-Stack',
     portraitAlt: 'Foto profil profesional Eka Prasetyo, AI Engineer dan Full-Stack Developer',
   },
   skills: {
@@ -362,6 +363,7 @@ export const id: Dictionary = {
     inputPlaceholder: 'Mis. Proyek mana yang memakai FastAPI, Flutter, atau LangGraph?',
     submit: 'Jalankan query',
     submitting: 'Memproses...',
+    loadingState: 'Mencari di data portfolio terverifikasi...',
     emptyState:
       'Pilih pertanyaan cepat di sebelah kiri atau ketik pertanyaan Anda sendiri. Setiap jawaban merujuk langsung ke sumber terverifikasi dan menampilkan trace retrieval.',
     citationsLabel: 'Sumber terverifikasi',
@@ -379,6 +381,7 @@ export const id: Dictionary = {
     dialogLabel: 'Navigasi dan aksi cepat',
     placeholder: 'Cari proyek, teknologi, halaman, sertifikat, atau aksi...',
     empty: 'Tidak ditemukan halaman, proyek, atau aksi yang cocok.',
+    resetSearch: 'Hapus pencarian',
     hint: 'Gunakan panah untuk navigasi, Enter untuk membuka, Esc untuk menutup.',
     close: 'Tutup',
     groups: {

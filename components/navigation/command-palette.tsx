@@ -6,7 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { achievements } from '@/content/achievements'
 import { projects } from '@/content/projects'
 import { siteConfig } from '@/content/site'
-import { localePath, type Locale } from '@/i18n/config'
+import { LOCALE_COOKIE, localePath, type Locale } from '@/i18n/config'
 import type { Dictionary } from '@/i18n/get-dictionary'
 import {
   AiGraphIcon,
@@ -43,6 +43,7 @@ type Props = {
   resumeHref: string
   resumeIsFile: boolean
   copy: Dictionary['command']
+  onBeforeOpen?: () => void
 }
 
 function CommandIcon({ icon }: { icon: CommandItem['icon'] }) {
@@ -66,7 +67,7 @@ function CommandIcon({ icon }: { icon: CommandItem['icon'] }) {
   }
 }
 
-export function CommandPalette({ locale, navItems, resumeHref, resumeIsFile, copy }: Props) {
+export function CommandPalette({ locale, navItems, resumeHref, resumeIsFile, copy, onBeforeOpen }: Props) {
   const router = useRouter()
   const pathname = usePathname()
   const { resolvedTheme, setTheme } = useTheme()
@@ -77,8 +78,14 @@ export function CommandPalette({ locale, navItems, resumeHref, resumeIsFile, cop
   const [copiedEmail, setCopiedEmail] = useState(false)
 
   const triggerRef = useRef<HTMLButtonElement>(null)
+  const dialogRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const wasOpenRef = useRef(false)
+
+  const openPalette = useCallback(() => {
+    onBeforeOpen?.()
+    setOpen(true)
+  }, [onBeforeOpen])
 
   const closePalette = useCallback(() => {
     setOpen(false)
@@ -179,6 +186,7 @@ export function CommandPalette({ locale, navItems, resumeHref, resumeIsFile, cop
         keywords: 'language bahasa english indonesian en id locale',
         icon: 'page',
         run: () => {
+          document.cookie = `${LOCALE_COOKIE}=${otherLocale}; path=/; max-age=31536000; samesite=lax`
           closePalette()
           router.push(switchedPath || `/${otherLocale}`)
         },
@@ -267,12 +275,15 @@ export function CommandPalette({ locale, navItems, resumeHref, resumeIsFile, cop
     const onGlobalKey = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault()
-        setOpen((current) => !current)
+        setOpen((current) => {
+          if (!current) onBeforeOpen?.()
+          return !current
+        })
       }
     }
     window.addEventListener('keydown', onGlobalKey)
     return () => window.removeEventListener('keydown', onGlobalKey)
-  }, [])
+  }, [onBeforeOpen])
 
   useEffect(() => {
     if (!open) {
@@ -291,6 +302,22 @@ export function CommandPalette({ locale, navItems, resumeHref, resumeIsFile, cop
       if (event.key === 'Escape') {
         event.preventDefault()
         closePalette()
+      } else if (event.key === 'Tab' && dialogRef.current) {
+        const focusable = Array.from(
+          dialogRef.current.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          ),
+        )
+        if (focusable.length === 0) return
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault()
+          last.focus()
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault()
+          first.focus()
+        }
       } else if (event.key === 'ArrowDown') {
         event.preventDefault()
         setActiveIndex((current) => (filtered.length > 0 ? (current + 1) % filtered.length : 0))
@@ -312,13 +339,14 @@ export function CommandPalette({ locale, navItems, resumeHref, resumeIsFile, cop
   }, [activeIndex, closePalette, filtered, open])
 
   const groupedOrder: CommandGroup[] = ['actions', 'projects', 'certificates', 'pages']
+  const activeOptionId = filtered[activeIndex] ? `cmd-opt-${filtered[activeIndex].id}` : undefined
 
   return (
     <>
       <button
         ref={triggerRef}
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={openPalette}
         aria-label={copy.triggerLabel}
         aria-haspopup="dialog"
         aria-expanded={open}
@@ -335,10 +363,11 @@ export function CommandPalette({ locale, navItems, resumeHref, resumeIsFile, cop
           role="dialog"
           aria-modal="true"
           aria-label={copy.dialogLabel}
-          className="fixed inset-0 z-[70] flex items-start justify-center bg-background/80 px-4 pt-[10dvh] backdrop-blur-sm"
+          className="fixed inset-0 z-[70] flex items-start justify-center bg-background/85 px-4 pt-[10dvh]"
           onClick={closePalette}
         >
           <div
+            ref={dialogRef}
             className="flex max-h-[75dvh] w-full max-w-xl flex-col overflow-hidden rounded-xl border border-border bg-card shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
@@ -347,70 +376,87 @@ export function CommandPalette({ locale, navItems, resumeHref, resumeIsFile, cop
               <input
                 ref={inputRef}
                 type="search"
+                role="combobox"
+                aria-expanded={true}
+                aria-controls="command-palette-list"
+                aria-activedescendant={activeOptionId}
+                aria-autocomplete="list"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder={copy.placeholder}
                 aria-label={copy.placeholder}
-                className="min-h-9 flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                className="min-h-11 flex-1 rounded-md bg-transparent px-2 text-sm text-foreground placeholder:text-muted-foreground"
               />
               <button
                 type="button"
                 aria-label={copy.close}
                 onClick={closePalette}
-                className="inline-flex size-11 shrink-0 items-center justify-center rounded-md border border-input bg-background text-muted-foreground transition-colors hover:bg-elevated hover:text-foreground"
+                className="inline-flex size-11 shrink-0 items-center justify-center rounded-md border border-input bg-background text-muted-foreground transition-colors hover:bg-elevated hover:text-foreground active:translate-y-px"
               >
                 <CloseIcon className="size-4" />
               </button>
             </div>
 
-            <div className="overflow-y-auto p-2" role="listbox" aria-label={copy.dialogLabel}>
+            <div id="command-palette-list" className="overflow-y-auto p-2" role="listbox" aria-label={copy.dialogLabel}>
               {filtered.length === 0 ? (
-                <p className="px-4 py-10 text-center text-sm text-muted-foreground">{copy.empty}</p>
+                <div className="flex flex-col items-center gap-3 px-4 py-10 text-center">
+                  <p className="text-sm text-muted-foreground">{copy.empty}</p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setQuery('')
+                      inputRef.current?.focus()
+                    }}
+                    className="inline-flex min-h-11 items-center rounded-lg border border-input bg-background px-4 text-sm font-medium text-foreground transition-colors hover:bg-elevated active:translate-y-px"
+                  >
+                    {copy.resetSearch}
+                  </button>
+                </div>
               ) : (
                 groupedOrder.map((group) => {
                   const groupItems = filtered.filter((item) => item.group === group)
                   if (groupItems.length === 0) return null
+                  const groupLabelId = `cmd-group-${group}`
                   return (
-                    <div key={group} className="mb-2 last:mb-0">
-                      <p className="px-3 py-1.5 font-mono text-[11px] font-medium text-brand">
+                    <div key={group} role="group" aria-labelledby={groupLabelId} className="mb-2 last:mb-0">
+                      <p id={groupLabelId} role="presentation" className="px-3 py-1.5 font-mono text-[11px] font-medium text-brand">
                         {copy.groups[group]}
                       </p>
-                      <ul className="flex flex-col gap-0.5">
+                      <div className="flex flex-col gap-0.5">
                         {groupItems.map((item) => {
                           const flatIndex = filtered.indexOf(item)
                           const selected = flatIndex === activeIndex
                           return (
-                            <li key={item.id}>
-                              <button
-                                type="button"
-                                role="option"
-                                aria-selected={selected}
-                                onMouseEnter={() => setActiveIndex(flatIndex)}
-                                onClick={item.run}
-                                className={cn(
-                                  'flex min-h-11 w-full items-center justify-between gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors',
-                                  selected
-                                    ? 'bg-elevated text-foreground'
-                                    : 'text-muted-foreground hover:bg-elevated hover:text-foreground',
+                            <div
+                              key={item.id}
+                              id={`cmd-opt-${item.id}`}
+                              role="option"
+                              aria-selected={selected}
+                              onMouseEnter={() => setActiveIndex(flatIndex)}
+                              onClick={item.run}
+                              className={cn(
+                                'flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors active:translate-y-px',
+                                selected
+                                  ? 'bg-elevated text-foreground'
+                                  : 'text-muted-foreground hover:bg-elevated hover:text-foreground',
+                              )}
+                            >
+                              <span className="flex min-w-0 items-center gap-2.5">
+                                {item.id === 'action:copy-email' && copiedEmail ? (
+                                  <CheckIcon className="size-4 shrink-0 text-success" />
+                                ) : (
+                                  <CommandIcon icon={item.icon} />
                                 )}
-                              >
-                                <span className="flex min-w-0 items-center gap-2.5">
-                                  {item.id === 'action:copy-email' && copiedEmail ? (
-                                    <CheckIcon className="size-4 shrink-0 text-success" />
-                                  ) : (
-                                    <CommandIcon icon={item.icon} />
-                                  )}
-                                  <span className="truncate font-medium text-foreground">{item.title}</span>
-                                </span>
-                                <span className="flex shrink-0 items-center gap-1.5 font-mono text-xs text-muted-foreground">
-                                  {item.subtitle ? <span className="hidden sm:inline">{item.subtitle}</span> : null}
-                                  {item.external ? <ExternalLinkIcon className="size-3.5" /> : null}
-                                </span>
-                              </button>
-                            </li>
+                                <span className="truncate font-medium text-foreground">{item.title}</span>
+                              </span>
+                              <span className="flex shrink-0 items-center gap-1.5 font-mono text-xs text-muted-foreground">
+                                {item.subtitle ? <span className="hidden sm:inline">{item.subtitle}</span> : null}
+                                {item.external ? <ExternalLinkIcon className="size-3.5" /> : null}
+                              </span>
+                            </div>
                           )
                         })}
-                      </ul>
+                      </div>
                     </div>
                   )
                 })

@@ -211,6 +211,25 @@
 }
 
 @media print {
+  :root,
+  .dark {
+    color-scheme: light;
+    --background: #ffffff;
+    --foreground: #0b0c0e;
+    --card: #ffffff;
+    --card-foreground: #0b0c0e;
+    --elevated: #f1f2f4;
+    --muted-foreground: #374151;
+    --brand: #0369a1;
+    --border: #d1d5db;
+    --input: #6b7280;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0b0c0e !important;
+  }
+
   .no-print {
     display: none !important;
   }
